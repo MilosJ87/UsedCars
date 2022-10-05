@@ -14,10 +14,11 @@ namespace UsedCars.Entities
         public string Name { get; set; }
 
 
-        [ForeignKey("VehicleId")]
-        public Vehicle Vehicle { get; set; }
 
-        public Guid VehicleId { get; set; }
+
+        public ICollection<Vehicle> Vehicles { get; set; }
+
+        
 
     }
 }
