@@ -42,7 +42,7 @@ namespace UsedCars.Migrations
                     b.ToTable("AdditionalEquipments");
                 });
 
-            modelBuilder.Entity("UsedCars.Entities.Marke", b =>
+            modelBuilder.Entity("UsedCars.Entities.Category", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -54,7 +54,36 @@ namespace UsedCars.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Markes");
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("d28888e9-2ba9-473a-a40f-e38cb54f9b35"),
+                            Name = "Passenger Car"
+                        });
+                });
+
+            modelBuilder.Entity("UsedCars.Entities.Make", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Makes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("da2fd609-d754-4feb-8acd-c4f9ff13ba96"),
+                            Name = "Audi"
+                        });
                 });
 
             modelBuilder.Entity("UsedCars.Entities.Model", b =>
@@ -70,21 +99,13 @@ namespace UsedCars.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Models");
-                });
 
-            modelBuilder.Entity("UsedCars.Entities.Type", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Types");
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("2902b665-1190-4c70-9915-b9c2d7680450"),
+                            Name = "S3"
+                        });
                 });
 
             modelBuilder.Entity("UsedCars.Entities.Vehicle", b =>
@@ -93,7 +114,10 @@ namespace UsedCars.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("MarkeId")
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("MakeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("ModelId")
@@ -103,16 +127,13 @@ namespace UsedCars.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("TypeId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("MarkeId");
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("MakeId");
 
                     b.HasIndex("ModelId");
-
-                    b.HasIndex("TypeId");
 
                     b.ToTable("Vehicles");
                 });
@@ -126,9 +147,15 @@ namespace UsedCars.Migrations
 
             modelBuilder.Entity("UsedCars.Entities.Vehicle", b =>
                 {
-                    b.HasOne("UsedCars.Entities.Marke", "Marke")
+                    b.HasOne("UsedCars.Entities.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("MarkeId")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UsedCars.Entities.Make", "Make")
+                        .WithMany("Vehicles")
+                        .HasForeignKey("MakeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -138,20 +165,14 @@ namespace UsedCars.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("UsedCars.Entities.Type", "Type")
-                        .WithMany("Vehicles")
-                        .HasForeignKey("TypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Category");
 
-                    b.Navigation("Marke");
+                    b.Navigation("Make");
 
                     b.Navigation("Model");
-
-                    b.Navigation("Type");
                 });
 
-            modelBuilder.Entity("UsedCars.Entities.Type", b =>
+            modelBuilder.Entity("UsedCars.Entities.Make", b =>
                 {
                     b.Navigation("Vehicles");
                 });
