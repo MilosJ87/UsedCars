@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using UsedCars.Entities;
 using UsedCars.Models;
@@ -8,7 +9,7 @@ namespace UsedCars.Controllers
 {
     [Route("api/category")]
     [ApiController]
-    public class CategoryController : Controller
+    public class CategoryController : ControllerBase
     {
         private readonly ICategoryRepo _categoryRepo;
 
@@ -16,55 +17,131 @@ namespace UsedCars.Controllers
 
         public CategoryController(ICategoryRepo categoryRepo, IMapper mapper)
         {
-            _categoryRepo = categoryRepo;
-            _mapper = mapper;
+            _categoryRepo = categoryRepo ?? throw new ArgumentNullException(nameof(categoryRepo));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<Category>))]
-        public IActionResult GetCategories()
+        public ActionResult GetCategories()
         {
             var categories = _mapper.Map<List<CategoryDto>>(_categoryRepo.GetCategories());
-            
-            if(!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }    
-
-            return Ok(categories);
-        }
-
-        [HttpPost]
-        [ProducesResponseType(204)]
-        [ProducesResponseType(400)]
-        public IActionResult CreateCategory([FromBody] CategoryDto categoryCreate)
-        {
-            if (categoryCreate == null)
-                return BadRequest(ModelState);
-
-            var category = _categoryRepo.GetCategories()
-                .Where(c => c.Name.Trim().ToUpper() == categoryCreate.Name.TrimEnd().ToUpper())
-                .FirstOrDefault();
-
-            if (category != null)
-            {
-                ModelState.AddModelError("", "Category already exists");
-                return StatusCode(422, ModelState);
-            }
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var categoryMap = _mapper.Map<Category>(categoryCreate);
+            return Ok(categories);
+        }
 
-            if (!_categoryRepo.CreateCategory(categoryMap))
+        [HttpGet("{categoryId}", Name="GetCategory")]
+        public IActionResult GetCategory(Guid categoryId)
+        {
+            var category = _categoryRepo.GetCategory(categoryId);
+            if (category==null)
             {
-                ModelState.AddModelError("", "Something went wrong while savin");
-                return StatusCode(500, ModelState);
+                return NotFound();
+            }
+            return Ok(_mapper.Map<CategoryDto>(category));
+        }
+        [HttpPost]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        public ActionResult CreateCategory([FromBody] CategoryDto categoryCreate)
+        {
+           
+
+            var categoryEntity = _mapper.Map<Category>(categoryCreate);
+            _categoryRepo.CreateCategory(categoryEntity);
+            _categoryRepo.Save();
+
+            var categoryToReturn = _mapper.Map<CategoryDto>(categoryEntity);
+
+            return Ok(categoryToReturn);
+        }
+
+        [HttpPut("{categoryId}")]
+
+        public IActionResult UpdateCategory(Guid categoryId, [FromBody] UpdateCategoryDto category)
+        {
+            if (!_categoryRepo.CategoryExsits(categoryId))
+            {
+                return NotFound();
             }
 
-            return Ok("Successfully created");
+            var categoryFromRepo = _categoryRepo.GetCategory(categoryId);
+
+            if (categoryFromRepo == null)
+            {
+                var categoryToAdd = _mapper.Map<Category>(category);
+                categoryToAdd.Id = categoryId;
+
+                _categoryRepo.CreateCategory(categoryToAdd);
+
+                _categoryRepo.Save();
+
+                var categoryToReturn = (_mapper.Map<CategoryDto>(categoryToAdd));
+
+                return CreatedAtRoute("GetCategory", new { categoryId = categoryToReturn.Id }, categoryToReturn);
+               
+            }
+
+            _mapper.Map(category, categoryFromRepo);
+
+            _categoryRepo.UpdateCategory(categoryFromRepo);
+
+            _categoryRepo.Save();
+
+            return NoContent();
+            
         }
+
+        [HttpDelete("{categoryId}")]
+
+        public ActionResult DeleteCategory(Guid categoryId)
+        {
+            var categoryFromRepo = _categoryRepo.GetCategory(categoryId);
+
+            if (categoryFromRepo==null)
+            {
+                return NotFound();
+            }
+
+            _categoryRepo.DeleteCategory(categoryFromRepo);
+            _categoryRepo.Save();
+
+            return NoContent();
+
+        }
+
+
+
+
+        //[HttpPatch("{categoryId}")]
+        //public ActionResult PartiallyUpdateCategory(Guid categoryId, JsonPatchDocument<UpdateCategoryDto> patchDocument )
+        //{
+        //    if (!_categoryRepo.CategoryExsits(categoryId))
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var categoryFromRepo = _categoryRepo.GetCategory(categoryId);
+
+        //    if (categoryFromRepo == null)
+        //    {
+        //        var categoryToAdd = _mapper.Map<Category>(category);
+        //        categoryToAdd.Id = category.Id;
+
+        //        _categoryRepo.CreateCategory(categoryToAdd);
+
+        //        _categoryRepo.Save();
+
+        //        var categoryToReturn = (_mapper.Map<CategoryDto>(categoryToAdd));
+
+        //        return CreatedAtRoute("GetCategory", new { categoryId = categoryToReturn.Id }, categoryToReturn);
+
+
+
+        //    }
+        //}
 
 
 

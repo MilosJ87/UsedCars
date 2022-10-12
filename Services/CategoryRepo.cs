@@ -4,13 +4,13 @@ using UsedCars.Entities;
 
 namespace UsedCars.Services
 {
-    public class CategoryRepo 
-        {
+    public class CategoryRepo : ICategoryRepo
+    {
         private readonly UsedCarsContext _context;
 
         public CategoryRepo(UsedCarsContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public bool CategoryExsits(Guid id)
@@ -25,8 +25,9 @@ namespace UsedCars.Services
 
         public Category GetCategory(Guid id)
         {
-            return _context.Categories.Where(e => e.Id == id).FirstOrDefault();
+            return _context.Categories.Where(e => e.Id  == id).FirstOrDefault();
         }
+
 
         public bool CreateCategory(Category category)
         {
@@ -51,10 +52,9 @@ namespace UsedCars.Services
             return saved > 0 ? true : false;
         }
 
-        public bool UpdateCategory(Category category)
+        public void UpdateCategory(Category category)
         {
-            _context.Update(category);
-            return Save();
+            
         }
 
 

@@ -4,9 +4,13 @@ namespace UsedCars.Services
 {
     public interface IVehicleRepo
     {
-        void AddVehicle(Guid makeId, Guid categoryId, Guid modelId, Vehicle vehicle);
-        bool categoryExists(Guid categoryId);
+        void AddVehicle(Guid categoryId, Guid modelId, Guid makeId, Vehicle vehicle);
+        bool VehicleExists(Guid categoryId);
+        void DeleteVehicle(Vehicle vehicle);
+        void Dispose();
+        Vehicle GetVehicle(Guid categoryId, Guid modelId, Guid makeId, Guid vehicleId);
         ICollection<Vehicle> GetVehicles();
         bool Save();
+        void UpdateVehicle(Vehicle vehicle);
     }
 }

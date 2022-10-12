@@ -6,7 +6,11 @@
 
         public string Name { get; set; }
 
-       
+        public Guid CategoryId { get; set; }
+
+        public Guid ModelId { get; set; }
+
+        public Guid MakeId { get; set; }
 
      }
 

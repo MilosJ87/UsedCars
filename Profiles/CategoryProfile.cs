@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using System.Runtime.InteropServices;
+using UsedCars.Entities;
 using UsedCars.Models;
 
 namespace UsedCars.Profiles
@@ -10,6 +11,7 @@ namespace UsedCars.Profiles
         {
             CreateMap<Entities.Category, CategoryDto > ();
             CreateMap<CategoryDto, Entities.Category>();
+            CreateMap<UpdateCategoryDto, Category>();
         }
         
     }
