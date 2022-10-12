@@ -21,6 +21,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddScoped<IAdditionalEquipmentRepo, AdditionalEquipmentRepo>();
 builder.Services.AddScoped<IModelRepo, ModelRepo>();
 builder.Services.AddScoped<IMakeRepo, MakeRepo>();
 builder.Services.AddScoped<IVehicleRepo, VehicleRepo>();
