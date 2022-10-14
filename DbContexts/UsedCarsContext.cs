@@ -20,7 +20,7 @@ namespace UsedCars.DbContexts
         public DbSet<Category> Categories { get; set; }
 
        // public DbSet<VehicleCategory> vehicleCategories { get; set; }
-
+       public DbSet<VehicleEquipment> VehicleEquipments { get; set; }   
 
         public DbSet<AdditionalEquipment> AdditionalEquipments { get; set; }
 
@@ -28,6 +28,16 @@ namespace UsedCars.DbContexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<VehicleEquipment>()
+                    .HasKey(po => new { po.VehicleId, po.AdditionalEquipmentId });
+            modelBuilder.Entity<VehicleEquipment>()
+                    .HasOne(p => p.Vehicle)
+                    .WithMany(pc => pc.AdditionalEquipments)
+                    .HasForeignKey(p => p.VehicleId);
+            modelBuilder.Entity<VehicleEquipment>()
+                    .HasOne(p => p.AdditionalEquipment)
+                    .WithMany(pc => pc.VehicleEquipments)
+                    .HasForeignKey(c => c.AdditionalEquipmentId);
             modelBuilder.Entity<Category>().HasData(
                 new Category
                 {

@@ -9,7 +9,7 @@ namespace UsedCars.Entities
         public Guid Id { get; set; }
         public string Name { get; set; }
 
-        ICollection<Vehicle> Vehicles { get; set; }
+       public ICollection<Vehicle> Vehicles { get; set; }
 
     }
 }

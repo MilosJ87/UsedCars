@@ -23,7 +23,8 @@ namespace UsedCars.Entities
         public Guid MakeId { get; set; }
         public Make Make { get; set; }
              
+       
 
-        public ICollection<AdditionalEquipment> AdditionalEquipments { get; set; } = new List<AdditionalEquipment>();
+        public virtual ICollection<VehicleEquipment> AdditionalEquipments { get; set; }
     }
 }

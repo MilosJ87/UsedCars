@@ -10,6 +10,8 @@ namespace UsedCars.Services
         void Dispose();
         AdditionalEquipment GetAdditionalEquipment(Guid id);
         ICollection<AdditionalEquipment> GetAdditionalEquipments();
+        ICollection<AdditionalEquipment> GetEquipmentByVehicle(Guid vehicleId);
+        ICollection<Vehicle> GetVehicleByEquipment(Guid additionalEquipmentId);
         bool Save();
         void UpdateEquipment(AdditionalEquipment additionalEquipment);
     }

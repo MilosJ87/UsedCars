@@ -4,7 +4,7 @@ using UsedCars.Entities;
 
 namespace UsedCars.Services
 {
-    public class AdditionalEquipmentRepo : IAdditionalEquipmentRepo, IDisposable
+    public class AdditionalEquipmentRepo : IDisposable, IAdditionalEquipmentRepo
     {
         private readonly UsedCarsContext _usedCarsContext;
 
@@ -22,6 +22,17 @@ namespace UsedCars.Services
         {
             return _usedCarsContext.AdditionalEquipments.ToList();
         }
+        public ICollection<AdditionalEquipment> GetEquipmentByVehicle(Guid vehicleId)
+        {
+            return _usedCarsContext.VehicleEquipments.Where(p => p.Vehicle.Id == vehicleId).Select(o => o.AdditionalEquipment).ToList();
+        }
+
+        public ICollection<Vehicle> GetVehicleByEquipment(Guid additionalEquipmentId)
+        {
+            return _usedCarsContext.VehicleEquipments.Where(p => p.AdditionalEquipment.Id == additionalEquipmentId).Select(c => c.Vehicle).ToList();
+        }
+
+
 
         public AdditionalEquipment GetAdditionalEquipment(Guid id)
         {

@@ -12,6 +12,7 @@
 
         public Guid MakeId { get; set; }
 
+        List<AdditionalEquipmentDto> AdditionalEquipmentDtoList { get; set; }
      }
 
  }

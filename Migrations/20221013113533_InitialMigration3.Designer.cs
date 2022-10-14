@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UsedCars.DbContexts;
 
@@ -11,9 +12,10 @@ using UsedCars.DbContexts;
 namespace UsedCars.Migrations
 {
     [DbContext(typeof(UsedCarsContext))]
-    partial class UsedCarsContextModelSnapshot : ModelSnapshot
+    [Migration("20221013113533_InitialMigration3")]
+    partial class InitialMigration3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +23,21 @@ namespace UsedCars.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("AdditionalEquipmentVehicle", b =>
+                {
+                    b.Property<Guid>("AdditionalEquipmentsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("VehiclesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("AdditionalEquipmentsId", "VehiclesId");
+
+                    b.HasIndex("VehiclesId");
+
+                    b.ToTable("AdditionalEquipmentVehicle");
+                });
 
             modelBuilder.Entity("UsedCars.Entities.AdditionalEquipment", b =>
                 {
@@ -133,19 +150,19 @@ namespace UsedCars.Migrations
                     b.ToTable("Vehicles");
                 });
 
-            modelBuilder.Entity("UsedCars.Entities.VehicleEquipment", b =>
+            modelBuilder.Entity("AdditionalEquipmentVehicle", b =>
                 {
-                    b.Property<Guid>("VehicleId")
-                        .HasColumnType("uniqueidentifier");
+                    b.HasOne("UsedCars.Entities.AdditionalEquipment", null)
+                        .WithMany()
+                        .HasForeignKey("AdditionalEquipmentsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<Guid>("AdditionalEquipmentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("VehicleId", "AdditionalEquipmentId");
-
-                    b.HasIndex("AdditionalEquipmentId");
-
-                    b.ToTable("VehicleEquipments");
+                    b.HasOne("UsedCars.Entities.Vehicle", null)
+                        .WithMany()
+                        .HasForeignKey("VehiclesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("UsedCars.Entities.Vehicle", b =>
@@ -175,30 +192,6 @@ namespace UsedCars.Migrations
                     b.Navigation("Model");
                 });
 
-            modelBuilder.Entity("UsedCars.Entities.VehicleEquipment", b =>
-                {
-                    b.HasOne("UsedCars.Entities.AdditionalEquipment", "AdditionalEquipment")
-                        .WithMany("VehicleEquipments")
-                        .HasForeignKey("AdditionalEquipmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("UsedCars.Entities.Vehicle", "Vehicle")
-                        .WithMany("AdditionalEquipments")
-                        .HasForeignKey("VehicleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AdditionalEquipment");
-
-                    b.Navigation("Vehicle");
-                });
-
-            modelBuilder.Entity("UsedCars.Entities.AdditionalEquipment", b =>
-                {
-                    b.Navigation("VehicleEquipments");
-                });
-
             modelBuilder.Entity("UsedCars.Entities.Category", b =>
                 {
                     b.Navigation("Vehicles");
@@ -212,11 +205,6 @@ namespace UsedCars.Migrations
             modelBuilder.Entity("UsedCars.Entities.Model", b =>
                 {
                     b.Navigation("Vehicles");
-                });
-
-            modelBuilder.Entity("UsedCars.Entities.Vehicle", b =>
-                {
-                    b.Navigation("AdditionalEquipments");
                 });
 #pragma warning restore 612, 618
         }

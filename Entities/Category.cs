@@ -12,7 +12,7 @@ namespace UsedCars.Entities
            
         public string Name { get; set; }
 
-        ICollection<Vehicle> Vehicles { get; set; } 
+        public ICollection<Vehicle> Vehicles { get; set; } 
 
 
     }

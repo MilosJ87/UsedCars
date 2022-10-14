@@ -34,7 +34,28 @@ namespace UsedCars.Controllers
             var equipment = _additionalEquipmentRepo.GetAdditionalEquipment(additionalEquipmentId);
             return Ok(equipment);
         }
+        [HttpGet("{additionalEquipmentId}/vehicle")]
+        public IActionResult GetVehicleByEquipment(Guid additionalEquipmentId)
+        {
+            if (!_additionalEquipmentRepo.AdditionalEquipmentExists(additionalEquipmentId))
+            {
+                return NotFound();
+            }
 
+            var equipment = _mapper.Map<List<VehicleDto>>(
+                _additionalEquipmentRepo.GetVehicleByEquipment
+                (additionalEquipmentId));
+            return Ok(equipment);
+        }
+
+        [HttpGet("{vehicleId}/additionalEquipment")]
+        public IActionResult GetAdditionalEquipmentByVehicle(Guid vehicleId)
+        {
+            var vehicle = _mapper.Map<List<AdditionalEquipmentDto>>(
+                _additionalEquipmentRepo.
+                GetEquipmentByVehicle(vehicleId));
+            return Ok(vehicle);
+        }
         [HttpPost]
         public ActionResult CreateAdditionalEquipment([FromBody] AdditionalEquipmentDto additionalEquipmentDtoCreate)
         {
@@ -81,9 +102,6 @@ namespace UsedCars.Controllers
             return NoContent();
 
         }
-           
-           
-
-
+              
     }
 }

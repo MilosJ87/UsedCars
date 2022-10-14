@@ -11,7 +11,8 @@ namespace UsedCars.Entities
         
         public string Name { get; set; }
 
-        public  ICollection<Vehicle> Vehicles = new List<Vehicle>();        
+
+        public ICollection<VehicleEquipment> VehicleEquipments { get; set; }      
        
     }
 }

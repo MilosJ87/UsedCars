@@ -16,8 +16,18 @@ namespace UsedCars.Services
             _usedCarsContext = usedCarsContext;
         }
 
-        public void AddVehicle(Guid categoryId, Guid modelId, Guid makeId,Vehicle vehicle)
+        public void AddVehicle(Guid categoryId, Guid modelId, Guid makeId,Guid additionalEquipmentId,Vehicle vehicle)
         {
+            var vehicleEquipmentEntity = _usedCarsContext.AdditionalEquipments.Where(a => a.Id == additionalEquipmentId).FirstOrDefault();
+
+            var vehicleEquipment = new VehicleEquipment()
+            {
+                AdditionalEquipment = vehicleEquipmentEntity,
+                Vehicle = vehicle
+
+            };
+
+            _usedCarsContext.Add(vehicleEquipment);
 
             if (makeId == Guid.Empty)
             {
@@ -36,6 +46,8 @@ namespace UsedCars.Services
             _usedCarsContext.Vehicles.Add(vehicle);
 
         }
+
+
 
         public ICollection<Vehicle> GetVehicles()
         {
@@ -56,8 +68,8 @@ namespace UsedCars.Services
         {
             _usedCarsContext.Vehicles.Remove(vehicle);
         }
-
-        public Vehicle GetVehicle(Guid categoryId, Guid modelId, Guid makeId, Guid vehicleId)
+        
+        public Vehicle GetVehicle(Guid categoryId, Guid modelId, Guid makeId, Guid vehicleId, Guid additionalEquipmentId)
         {
             if (categoryId == Guid.Empty)
             {
