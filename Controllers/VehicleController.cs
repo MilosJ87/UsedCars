@@ -27,7 +27,7 @@ namespace UsedCars.Controllers
         public ActionResult<IEnumerable<VehicleDto>> GetVehicles()
         {
 
-            var vehiclesFromRepo = _vehicleRepo.GetVehicles();
+            var vehiclesFromRepo = _vehicleRepo.GetVehicles().Result;
 
             return Ok(_mapper.Map<IEnumerable<VehicleDto>>(vehiclesFromRepo));
         }
@@ -35,37 +35,33 @@ namespace UsedCars.Controllers
         [HttpGet("{vehicleId}", Name ="GetVehicle")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        public ActionResult<VehicleDto> GetVehicle(Guid categoryId, Guid makeId, Guid modelId, Guid vehicleId,Guid additionalEquipmentId)
+        public async Task<ActionResult<VehicleDto>> GetVehicle(Guid categoryId, Guid makeId, Guid modelId, Guid vehicleId)
         {
-            var vehicleFromRepo = _vehicleRepo.GetVehicle(categoryId, makeId, modelId,additionalEquipmentId, vehicleId);
+             var  vehicleFromRepo = await _vehicleRepo.GetVehicle(categoryId, makeId, modelId, vehicleId);
 
-            return Ok(_mapper.Map<VehicleDto>(vehicleFromRepo));
+            return  Ok(_mapper.Map<VehicleDto>(vehicleFromRepo));
         }
-
-       
-
-
-
+        
         [HttpPost]
        
-        public ActionResult<VehicleDto> CreateVehicle(Guid categoryId, Guid modelId, Guid makeId, Guid additionalEquipmentId, VehicleDto vehicle)
+        public async Task<ActionResult<VehicleDto>> CreateVehicle(Guid categoryId, Guid modelId, Guid makeId, VehicleDto vehicle)
         {
           
 
-            var vehicleEntity = _mapper.Map<Entities.Vehicle>(vehicle);
-            _vehicleRepo.AddVehicle(categoryId, modelId, makeId,additionalEquipmentId, vehicleEntity);
-            _vehicleRepo.Save();
+           var vehicleEntity = _mapper.Map<Entities.Vehicle>(vehicle);
+           await _vehicleRepo.AddVehicle(categoryId, modelId, makeId, vehicleEntity);
+           await  _vehicleRepo.Save();
             
 
             var vehicleToReturn = _mapper.Map<VehicleDto>(vehicleEntity);
 
-            return CreatedAtRoute("GetVehicle", new { categoryId, modelId, makeId,additionalEquipmentId, vehicleId = vehicleToReturn.Id }, vehicleToReturn); ;
+            return CreatedAtRoute("GetVehicle", new { categoryId, modelId, makeId, vehicleId = vehicleToReturn.Id }, vehicleToReturn); ;
         }
 
         [HttpPut("{vehicleId}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        public IActionResult UpdateVehicle(Guid categoryId, Guid modelId, Guid makeId, Guid vehicleId,Guid additionalEquipmentId, [FromBody] VehicleDto vehicle)
+        public async Task<IActionResult> UpdateVehicle(Guid categoryId, Guid modelId, Guid makeId, Guid vehicleId, [FromBody] VehicleDto vehicle)
         {
             
                 if (!_vehicleRepo.VehicleExists(vehicleId))
@@ -73,20 +69,20 @@ namespace UsedCars.Controllers
                     return NotFound();
                 }
 
-                var vehicleFromRepo = _vehicleRepo.GetVehicle(categoryId, modelId, makeId, additionalEquipmentId, vehicleId);
+                var vehicleFromRepo = await _vehicleRepo.GetVehicle(categoryId, modelId, makeId, vehicleId);
                 //Upserting
                 if (vehicleFromRepo==null)
                 {
-                    var vehicleToAdd = _mapper.Map<Vehicle>(vehicle);
+                    var vehicleToAdd =  _mapper.Map<Vehicle>(vehicle);
                     vehicleToAdd.Id = vehicleId;
 
-                    _vehicleRepo.AddVehicle(categoryId, modelId, makeId, additionalEquipmentId, vehicleToAdd);
+                    _vehicleRepo.AddVehicle(categoryId, modelId, makeId, vehicleToAdd);
 
-                    _vehicleRepo.Save();
+                   _vehicleRepo.Save();
 
                     var vehicleToReturn = _mapper.Map<VehicleDto>(vehicleToAdd);
 
-                    return CreatedAtRoute("GetVehicle", new { categoryId,modelId,makeId, additionalEquipmentId, vehicleId = vehicleToReturn.Id }, vehicleToReturn);
+                    return CreatedAtRoute("GetVehicle", new { categoryId,modelId,makeId,vehicleId = vehicleToReturn.Id }, vehicleToReturn);
                 }
 
                 _mapper.Map(vehicle, vehicleFromRepo);
@@ -103,14 +99,14 @@ namespace UsedCars.Controllers
       [HttpPatch("{vehicleId}")]
       [ProducesResponseType(204)]
       [ProducesResponseType(400)]
-      public ActionResult PartiallyUpdateVehicle(Guid categoryId, Guid modelId, Guid makeId,Guid additionalEquipmentId, Guid vehicleId,JsonPatchDocument<VehicleDto> patchDocument)
+      public async Task<ActionResult> PartiallyUpdateVehicle(Guid categoryId, Guid modelId, Guid makeId, Guid vehicleId,JsonPatchDocument<VehicleDto> patchDocument)
         {
             if (!_vehicleRepo.VehicleExists(vehicleId))
             {
                 return NotFound();
             }
 
-            var vehicleFromRepo = _vehicleRepo.GetVehicle(categoryId, modelId, makeId,additionalEquipmentId, vehicleId);
+            var vehicleFromRepo = await _vehicleRepo.GetVehicle(categoryId, modelId, makeId, vehicleId);
 
             if (vehicleFromRepo==null)
             {
@@ -125,7 +121,7 @@ namespace UsedCars.Controllers
                 var vehicleToAdd = _mapper.Map<Vehicle>(vehicleDto);
                 vehicleToAdd.Id = vehicleId;
 
-                _vehicleRepo.AddVehicle( categoryId, modelId, makeId, additionalEquipmentId, vehicleToAdd);
+                _vehicleRepo.AddVehicle( categoryId, modelId, makeId, vehicleToAdd);
 
                 _vehicleRepo.Save();
 
@@ -145,7 +141,7 @@ namespace UsedCars.Controllers
 
             _mapper.Map(vehicleToPatch, vehicleFromRepo);
 
-            _vehicleRepo.UpdateVehicle(vehicleFromRepo);
+           _vehicleRepo.UpdateVehicle(vehicleFromRepo);
 
             _vehicleRepo.Save();
 
@@ -154,9 +150,9 @@ namespace UsedCars.Controllers
         }
 
         [HttpDelete("{vehicleId}")]
-        public ActionResult DeleteVehicle(Guid categoryId, Guid modelId, Guid makeId,Guid additionalEquipmentId, Guid vehicleId)
+        public async Task<ActionResult> DeleteVehicle(Guid categoryId, Guid modelId, Guid makeId, Guid vehicleId)
         {
-            var vehicleFromRepo = _vehicleRepo.GetVehicle(categoryId, modelId, makeId, additionalEquipmentId, vehicleId);
+            var vehicleFromRepo = await _vehicleRepo.GetVehicle(categoryId, modelId, makeId, vehicleId);
 
             if (vehicleFromRepo == null)
             {

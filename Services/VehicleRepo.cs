@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using System.Collections.Generic;
 using UsedCars.DbContexts;
 using UsedCars.Entities;
 using UsedCars.Models;
@@ -16,18 +18,18 @@ namespace UsedCars.Services
             _usedCarsContext = usedCarsContext;
         }
 
-        public void AddVehicle(Guid categoryId, Guid modelId, Guid makeId,Guid additionalEquipmentId,Vehicle vehicle)
+        public async Task AddVehicle(Guid categoryId, Guid modelId, Guid makeId, Vehicle vehicle)
         {
-            var vehicleEquipmentEntity = _usedCarsContext.AdditionalEquipments.Where(a => a.Id == additionalEquipmentId).FirstOrDefault();
+            //var vehicleEquipmentEntity = await _usedCarsContext.AdditionalEquipments.Where(a => a.Id == additionalEquipmentId).FirstOrDefaultAsync();
 
-            var vehicleEquipment = new VehicleEquipment()
-            {
-                AdditionalEquipment = vehicleEquipmentEntity,
-                Vehicle = vehicle
+            //var vehicleEquipment = new VehicleEquipment()
+            //{
+            //    AdditionalEquipment = vehicleEquipmentEntity,
+            //    Vehicle = vehicle
 
-            };
+            //};
 
-            _usedCarsContext.Add(vehicleEquipment);
+            //await _usedCarsContext.AddAsync(vehicleEquipment);
 
             if (makeId == Guid.Empty)
             {
@@ -43,15 +45,16 @@ namespace UsedCars.Services
             vehicle.ModelId = modelId;
             vehicle.MakeId = makeId;
 
-            _usedCarsContext.Vehicles.Add(vehicle);
+            await _usedCarsContext.Vehicles.AddAsync(vehicle);
 
         }
 
 
 
-        public ICollection<Vehicle> GetVehicles()
+        public async Task<IEnumerable<Vehicle>> GetVehicles()
         {
-            return _usedCarsContext.Vehicles.OrderBy(c => c.Id).ToList();
+            var vehicles = await _usedCarsContext.Vehicles.ToListAsync();
+            return vehicles;
         }
 
         public bool VehicleExists(Guid vehicleId)
@@ -68,8 +71,8 @@ namespace UsedCars.Services
         {
             _usedCarsContext.Vehicles.Remove(vehicle);
         }
-        
-        public Vehicle GetVehicle(Guid categoryId, Guid modelId, Guid makeId, Guid vehicleId, Guid additionalEquipmentId)
+
+        public async Task<Vehicle> GetVehicle(Guid categoryId, Guid modelId, Guid makeId, Guid vehicleId)
         {
             if (categoryId == Guid.Empty)
             {
@@ -84,18 +87,18 @@ namespace UsedCars.Services
             {
                 throw new ArgumentNullException(nameof(modelId));
             }
-
-            return _usedCarsContext.Vehicles.Where(c => c.CategoryId == categoryId && c.MakeId == makeId && c.ModelId == modelId && c.Id == vehicleId).FirstOrDefault();
+            await _usedCarsContext.Database.ExecuteSqlRawAsync("Waitfor delay'00:00:02';");
+            return await _usedCarsContext.Vehicles.Where(c => c.CategoryId == categoryId && c.MakeId == makeId && c.ModelId == modelId && c.Id == vehicleId).FirstOrDefaultAsync();
         }
 
-        public void UpdateVehicle(Vehicle vehicle)
+        public async Task UpdateVehicle(Vehicle vehicle)
         {
 
         }
 
-        public bool Save()
+        public async Task<bool> Save()
         {
-            return (_usedCarsContext.SaveChanges() >= 0);
+            return (await _usedCarsContext.SaveChangesAsync() >= 0);
         }
 
         public void Dispose()
@@ -112,6 +115,6 @@ namespace UsedCars.Services
             }
         }
 
-       
+
     }
 }
