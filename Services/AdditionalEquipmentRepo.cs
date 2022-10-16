@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using UsedCars.DbContexts;
 using UsedCars.Entities;
 
@@ -27,12 +28,27 @@ namespace UsedCars.Services
             return _usedCarsContext.VehicleEquipments.Where(p => p.Vehicle.Id == vehicleId).Select(o => o.AdditionalEquipment).ToList();
         }
 
+        public bool CreateVehicleForEquipment(Guid additionalEquipmentId, Vehicle vehicle)
+        {
+            var vehicleEquipmentEntity = _usedCarsContext.AdditionalEquipments.Where(a => a.Id == additionalEquipmentId).FirstOrDefault();
+
+            var vehicleEquipment = new VehicleEquipment()
+            {
+                AdditionalEquipment = vehicleEquipmentEntity,
+                Vehicle = vehicle
+
+            };
+
+            _usedCarsContext.Add(vehicleEquipment);
+            _usedCarsContext.Add(vehicle);
+
+            return Save();
+        }
+
         public ICollection<Vehicle> GetVehicleByEquipment(Guid additionalEquipmentId)
         {
             return _usedCarsContext.VehicleEquipments.Where(p => p.AdditionalEquipment.Id == additionalEquipmentId).Select(c => c.Vehicle).ToList();
         }
-
-
 
         public AdditionalEquipment GetAdditionalEquipment(Guid id)
         {
@@ -75,7 +91,6 @@ namespace UsedCars.Services
 
             }
         }
-
-
+                
     }
 }

@@ -7,10 +7,8 @@ namespace UsedCars.Profiles
     {
         public AdditionalEquipmentProfile()
         {
-            CreateMap<Entities.AdditionalEquipment, AdditionalEquipmentDto>();
-            CreateMap<AdditionalEquipmentDto, Entities.AdditionalEquipment>();
-            CreateMap<UpdateAdditionalEquipment,Entities.AdditionalEquipment>();
-            CreateMap<Entities.AdditionalEquipment, UpdateAdditionalEquipment>();
+            CreateMap<Entities.AdditionalEquipment, AdditionalEquipmentDto>().ReverseMap();
+            CreateMap<Entities.AdditionalEquipment, UpdateAdditionalEquipment>().ReverseMap();
         }
     }
 }

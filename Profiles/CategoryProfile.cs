@@ -9,8 +9,7 @@ namespace UsedCars.Profiles
     {
         public CategoryProfile()
         {
-            CreateMap<Entities.Category, CategoryDto > ();
-            CreateMap<CategoryDto, Entities.Category>();
+            CreateMap<Entities.Category, CategoryDto>().ReverseMap();
             CreateMap<UpdateCategoryDto, Category>();
         }
         

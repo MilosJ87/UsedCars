@@ -34,6 +34,7 @@ namespace UsedCars.Controllers
             var equipment = _additionalEquipmentRepo.GetAdditionalEquipment(additionalEquipmentId);
             return Ok(equipment);
         }
+
         [HttpGet("{additionalEquipmentId}/vehicle")]
         public IActionResult GetVehicleByEquipment(Guid additionalEquipmentId)
         {
@@ -56,6 +57,7 @@ namespace UsedCars.Controllers
                 GetEquipmentByVehicle(vehicleId));
             return Ok(vehicle);
         }
+
         [HttpPost]
         public ActionResult CreateAdditionalEquipment([FromBody] AdditionalEquipmentDto additionalEquipmentDtoCreate)
         {
@@ -66,19 +68,20 @@ namespace UsedCars.Controllers
             var equipmentToReturn = _mapper.Map<AdditionalEquipmentDto>(additionalEquipmentEntity);
 
             return Ok(equipmentToReturn);
-            
+
         }
 
         [HttpPut("{additionalequipmentId}")]
-        public IActionResult UpdateEquipment(Guid additionalEquipmentId, [FromBody] UpdateAdditionalEquipment updateAdditionalEquipment)
+        public IActionResult UpdateEquipment(Guid additionalEquipmentId,
+            [FromBody] UpdateAdditionalEquipment updateAdditionalEquipment)
         {
             if (!_additionalEquipmentRepo.AdditionalEquipmentExists(additionalEquipmentId))
             {
                 return NotFound();
             }
 
-            var equipmentFromRepo = _additionalEquipmentRepo.GetAdditionalEquipment(additionalEquipmentId); 
-            
+            var equipmentFromRepo = _additionalEquipmentRepo.GetAdditionalEquipment(additionalEquipmentId);
+
             _mapper.Map(updateAdditionalEquipment, equipmentFromRepo);
             _additionalEquipmentRepo.UpdateEquipment(equipmentFromRepo);
             _additionalEquipmentRepo.Save();
@@ -91,7 +94,7 @@ namespace UsedCars.Controllers
         {
             var equipmentFromRepo = _additionalEquipmentRepo.GetAdditionalEquipment(additionalEquipmentId);
 
-            if (equipmentFromRepo==null)
+            if (equipmentFromRepo == null)
             {
                 return NotFound();
             }
@@ -102,6 +105,5 @@ namespace UsedCars.Controllers
             return NoContent();
 
         }
-              
     }
 }

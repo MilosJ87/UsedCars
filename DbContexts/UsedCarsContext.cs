@@ -7,25 +7,16 @@ namespace UsedCars.DbContexts
     public class UsedCarsContext : DbContext
     {
         public UsedCarsContext(DbContextOptions<UsedCarsContext> options)
-            :base(options)
+            : base(options)
         {
 
         }
         public DbSet<Vehicle> Vehicles { get; set; }
-
         public DbSet<Make> Makes { get; set; }
-
         public DbSet<Model> Models { get; set; }
-
         public DbSet<Category> Categories { get; set; }
-
-       // public DbSet<VehicleCategory> vehicleCategories { get; set; }
-       public DbSet<VehicleEquipment> VehicleEquipments { get; set; }   
-
+        public DbSet<VehicleEquipment> VehicleEquipments { get; set; }
         public DbSet<AdditionalEquipment> AdditionalEquipments { get; set; }
-
-
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<VehicleEquipment>()
@@ -41,8 +32,8 @@ namespace UsedCars.DbContexts
             modelBuilder.Entity<Category>().HasData(
                 new Category
                 {
-                    Id= Guid.Parse("d28888e9-2ba9-473a-a40f-e38cb54f9b35"),
-                    Name= "Passenger Car"
+                    Id = Guid.Parse("d28888e9-2ba9-473a-a40f-e38cb54f9b35"),
+                    Name = "Passenger Car"
                 });
             modelBuilder.Entity<Make>().HasData(
                 new Make
@@ -56,16 +47,7 @@ namespace UsedCars.DbContexts
                     Id = Guid.Parse("2902b665-1190-4c70-9915-b9c2d7680450"),
                     Name = "S3"
                 });
-
-
-            
-
-            
             base.OnModelCreating(modelBuilder);
-
-
         }
     }
-
-    
 }

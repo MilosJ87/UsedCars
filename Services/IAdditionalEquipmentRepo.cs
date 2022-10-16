@@ -6,6 +6,7 @@ namespace UsedCars.Services
     {
         bool AdditionalEquipmentExists(Guid id);
         bool CreateAdditionalEquipment(AdditionalEquipment additionalEquipment);
+        bool CreateVehicleForEquipment(Guid additionalEquipmentId, Vehicle vehicle);
         bool DeleteEquipment(AdditionalEquipment additionalEquipment);
         void Dispose();
         AdditionalEquipment GetAdditionalEquipment(Guid id);

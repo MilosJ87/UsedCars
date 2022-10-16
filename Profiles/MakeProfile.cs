@@ -7,8 +7,7 @@ namespace UsedCars.Profiles
     {
         public MakeProfile()
         {
-            CreateMap<Entities.Make, MakeDto>();
-            CreateMap<MakeDto, Entities.Make>();
+            CreateMap<Entities.Make, MakeDto>().ReverseMap();
             CreateMap<UpdateMakeDto, Entities.Make>();
         }
     }

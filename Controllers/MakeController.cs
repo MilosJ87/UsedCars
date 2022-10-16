@@ -23,7 +23,6 @@ namespace UsedCars.Controllers
         public ActionResult<IEnumerable<MakeDto>> GetMakes()
         {
             var makesFromRepo = _makeRepo.GetMakes();
-
             return Ok(_mapper.Map<IEnumerable<MakeDto>>(makesFromRepo));
         }
 
@@ -42,13 +41,12 @@ namespace UsedCars.Controllers
             _makeRepo.Save();
 
             var makeToReturn = _mapper.Map<MakeDto>(makeEntity);
-
+            
             return Ok(makeToReturn);
-
+            
         }
 
         [HttpPut("{makeId}")]
-
         public IActionResult UpdateMake(Guid makeId, [FromBody] UpdateMakeDto updateMakeDto)
         {
             if (!_makeRepo.MakeExists(makeId))
@@ -75,7 +73,6 @@ namespace UsedCars.Controllers
             {
                 return NotFound();
             }
-
             _makeRepo.DeleteMake(makeFromRepo);
             _makeRepo.Save();
 

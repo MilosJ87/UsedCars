@@ -9,8 +9,8 @@ namespace UsedCars.Profiles
     {
         public VehicleProfile()
         {
-            CreateMap<Entities.Vehicle, VehicleDto>();
-            CreateMap<Models.VehicleDto, Entities.Vehicle>();
+            CreateMap<Entities.Vehicle, VehicleDto>().ReverseMap();
+            
         }
     }
 }

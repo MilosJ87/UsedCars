@@ -8,8 +8,8 @@ namespace UsedCars.Profiles
     {
         public ModelProfile()
         {
-            CreateMap<Model, ModelDto>();
-            CreateMap<ModelDto, Model>();
+            CreateMap<Model, ModelDto>().ReverseMap();
+            
         }
     }
 }

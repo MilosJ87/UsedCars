@@ -31,7 +31,6 @@ namespace UsedCars.Controllers
 
             return Ok(categories);
         }
-
         [HttpGet("{categoryId}", Name="GetCategory")]
         public IActionResult GetCategory(Guid categoryId)
         {
@@ -59,7 +58,6 @@ namespace UsedCars.Controllers
         }
 
         [HttpPut("{categoryId}")]
-
         public IActionResult UpdateCategory(Guid categoryId, [FromBody] UpdateCategoryDto category)
         {
             if (!_categoryRepo.CategoryExsits(categoryId))
@@ -95,7 +93,6 @@ namespace UsedCars.Controllers
         }
 
         [HttpDelete("{categoryId}")]
-
         public ActionResult DeleteCategory(Guid categoryId)
         {
             var categoryFromRepo = _categoryRepo.GetCategory(categoryId);
