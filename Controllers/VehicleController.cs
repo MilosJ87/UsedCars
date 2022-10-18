@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using UsedCars.Entities;
@@ -19,12 +20,13 @@ namespace UsedCars.Controllers
 
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
-
+        [Authorize]
         [HttpGet]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         public async Task<ActionResult<IEnumerable<VehicleDto>>> GetVehicles()
         {
+            var claims = User.Claims;
             var vehiclesFromRepo = await _vehicleRepo.GetVehiclesAsync();
 
             return Ok(_mapper.Map<IEnumerable<VehicleDto>>(vehiclesFromRepo));
@@ -98,6 +100,7 @@ namespace UsedCars.Controllers
             return NoContent();
 
         }
+
         [HttpPatch("{vehicleId}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
@@ -150,9 +153,8 @@ namespace UsedCars.Controllers
             _vehicleRepo.Save();
 
             return NoContent();
-
         }
-
+        
         [HttpDelete("{vehicleId}")]
         public async Task<ActionResult> DeleteVehicle(Guid vehicleId)
         {

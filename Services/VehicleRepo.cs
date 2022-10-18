@@ -8,7 +8,6 @@ using UsedCars.Models;
 
 namespace UsedCars.Services
 {
-
     public class VehicleRepo : IDisposable, IVehicleRepo
     {
         private readonly UsedCarsContext _usedCarsContext;
@@ -36,8 +35,6 @@ namespace UsedCars.Services
             {
                 throw new ArgumentException(nameof(categoryId));
             }
-
-
             vehicle.CategoryId = categoryId;
             vehicle.ModelId = modelId;
             vehicle.MakeId = makeId;

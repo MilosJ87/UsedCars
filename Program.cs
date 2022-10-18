@@ -1,8 +1,11 @@
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Exchange.WebServices.Data;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Text.Json.Serialization;
+using UsedCars.Configuration;
 using UsedCars.DbContexts;
 using UsedCars.Services;
 
@@ -17,8 +20,26 @@ builder.Services.AddControllers().AddNewtonsoftJson(setupAction =>
        new CamelCasePropertyNamesContractResolver();
 });
 
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+builder.Services.AddIdentityServer()
+                .AddInMemoryApiScopes(InMemoryConfig.GetApiScopes())
+                .AddInMemoryApiResources(InMemoryConfig.GetApiResources())
+                .AddInMemoryIdentityResources(InMemoryConfig.GetIdentityResources())
+                .AddTestUsers(InMemoryConfig.GetUsers())
+                .AddInMemoryClients(InMemoryConfig.GetClients())
+                .AddDeveloperSigningCredential();
+
+builder.Services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", opt =>
+                {
+                    opt.RequireHttpsMetadata = false;
+                    opt.Authority = "https://localhost:5005";
+                    opt.Audience = "UsedCars";
+                });
+
+builder.Services.AddControllersWithViews();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddScoped<IAdditionalEquipmentRepo, AdditionalEquipmentRepo>();
@@ -38,11 +59,18 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseStaticFiles();
+app.UseRouting();
+app.UseIdentityServer();
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapDefaultControllerRoute();
+});
 app.MapControllers();
 
 app.Run();
