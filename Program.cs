@@ -7,6 +7,7 @@ using System;
 using System.Text.Json.Serialization;
 using UsedCars.Configuration;
 using UsedCars.DbContexts;
+using UsedCars.Extensions;
 using UsedCars.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,7 +38,8 @@ builder.Services.AddAuthentication("Bearer")
                     opt.Audience = "UsedCars";
                 });
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddDistributedMemoryCache();
+
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -64,6 +66,7 @@ app.UseRouting();
 app.UseIdentityServer();
 
 app.UseHttpsRedirection();
+app.UseRateLimiting();
 
 app.UseAuthentication();
 app.UseAuthorization();

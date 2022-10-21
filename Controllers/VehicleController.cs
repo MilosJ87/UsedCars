@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using UsedCars.Decorators;
 using UsedCars.Entities;
 using UsedCars.Models;
 using UsedCars.Services;
@@ -20,11 +21,12 @@ namespace UsedCars.Controllers
 
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
-        [Authorize]
+      //  [Authorize]
         [HttpGet]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        public async Task<ActionResult<IEnumerable<VehicleDto>>> GetVehicles()
+        [LimitRequests(MaxRequests = 2, TimeWindow = 5)]
+        public async Task<ActionResult<IEnumerable<VehicleDto>>> GetVehiclesAsync()
         {
             var claims = User.Claims;
             var vehiclesFromRepo = await _vehicleRepo.GetVehiclesAsync();
