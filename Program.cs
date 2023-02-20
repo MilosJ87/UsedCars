@@ -8,6 +8,7 @@ using System.Text.Json.Serialization;
 using UsedCars.Configuration;
 using UsedCars.DbContexts;
 using UsedCars.Extensions;
+using UsedCars.GenericRepository;
 using UsedCars.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -49,6 +50,7 @@ builder.Services.AddScoped<IModelRepo, ModelRepo>();
 builder.Services.AddScoped<IMakeRepo, MakeRepo>();
 builder.Services.AddScoped<IVehicleRepo, VehicleRepo>();
 builder.Services.AddScoped<ICategoryRepo, CategoryRepo>();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddSwaggerGen();
 var dbConnectionString = builder.Configuration.GetConnectionString("DBConnectionString");
 

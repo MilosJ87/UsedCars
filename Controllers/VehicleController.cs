@@ -37,7 +37,7 @@ namespace UsedCars.Controllers
         [HttpGet("{vehicleId}", Name = "GetVehicle")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        public async Task<ActionResult<VehicleDto>> GetVehicle(Guid vehicleId)
+        public async Task<ActionResult<VehicleDto>> GetVehicleAsync(Guid vehicleId)
         {
             var vehicleFromRepo = await _vehicleRepo.GetVehicleAsync(vehicleId);
 
@@ -45,7 +45,7 @@ namespace UsedCars.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<VehicleDto>> CreateVehicle(Guid categoryId,
+        public async Task<ActionResult<VehicleDto>> CreateVehicleAsync(Guid categoryId,
            Guid modelId, Guid makeId, Guid additionalEquipmentId, [FromBody] VehicleDto vehicle)
         {
             var vehicleEntity = _mapper.Map<Entities.Vehicle>(vehicle);
@@ -57,13 +57,13 @@ namespace UsedCars.Controllers
 
             return CreatedAtRoute("GetVehicle",
                 new { categoryId, modelId, makeId, vehicleId = vehicleToReturn.Id },
-                vehicleToReturn); ;
+                vehicleToReturn); 
         }
 
         [HttpPut("{vehicleId}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        public async Task<IActionResult> UpdateVehicle(Guid vehicleId, Guid additionalEquipmentId,
+        public async Task<IActionResult> UpdateVehicleAsync(Guid vehicleId, Guid additionalEquipmentId,
             [FromBody] VehicleDto vehicle)
         {
 
@@ -106,7 +106,7 @@ namespace UsedCars.Controllers
         [HttpPatch("{vehicleId}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        public async Task<ActionResult> PartiallyUpdateVehicle(Guid vehicleId, Guid additionalEquipmentId,
+        public async Task<ActionResult> PartiallyUpdateVehicleAsync(Guid vehicleId, Guid additionalEquipmentId,
             [FromBody] JsonPatchDocument<VehicleDto> patchDocument)
         {
             if (!_vehicleRepo.VehicleExists(vehicleId))
@@ -158,7 +158,7 @@ namespace UsedCars.Controllers
         }
         
         [HttpDelete("{vehicleId}")]
-        public async Task<ActionResult> DeleteVehicle(Guid vehicleId)
+        public async Task<ActionResult> DeleteVehicleAsync(Guid vehicleId)
         {
             var vehicleFromRepo = await _vehicleRepo.GetVehicleAsync(vehicleId);
 

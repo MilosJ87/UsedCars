@@ -17,7 +17,7 @@ namespace UsedCars.CustomMiddleWare
         }
         public async Task InvokeAsync(HttpContext context)
         {
-
+            //getting endpoint
             var endpoint = context.GetEndpoint();
             var rateLimitingDecorator = endpoint?.Metadata.GetMetadata<LimitRequests>();
 
@@ -46,6 +46,12 @@ namespace UsedCars.CustomMiddleWare
 
         private async Task<ClientStatistics> GetClientStatisticsByKey(string key) => await _cache.GetCacheValueAsync<ClientStatistics>(key);
 
+        public class ClientStatistics
+        {
+            public DateTime LastSuccessfulResponseTime { get; set; }
+            public int NumberOfRequestsCompletedSuccessfully { get; set; }
+        }
+
         private async Task UpdateClientStatisticsStorage(string key, int maxRequests)
         {
             var clientStat = await _cache.GetCacheValueAsync<ClientStatistics>(key);
@@ -72,14 +78,7 @@ namespace UsedCars.CustomMiddleWare
 
                 await _cache.SetCacheValueAsync<ClientStatistics>(key, clientStatistics);
             }
-
         }
-    }
-
-    public class ClientStatistics
-    {
-        public DateTime LastSuccessfulResponseTime { get; set; }
-        public int NumberOfRequestsCompletedSuccessfully { get; set; }
     }
 }
 
