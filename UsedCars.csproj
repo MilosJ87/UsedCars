@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="UsedCars.Data\UsedCars.Data.csproj" />
+    <ProjectReference Include="..\UsedCars.Data\UsedCars.Data.csproj" />
   </ItemGroup>
 
 </Project>
