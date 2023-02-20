@@ -2,7 +2,6 @@
 using UsedCars.DbContexts;
 using UsedCars.Entities;
 
-
 namespace UsedCars.Services
 {
     public class CategoryRepo : ICategoryRepo
