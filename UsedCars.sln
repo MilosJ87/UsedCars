@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsedCars.Data", "..\UsedCar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsedCars.Repository", "..\UsedCars.Repository\UsedCars.Repository.csproj", "{546D9B23-8C81-40B9-9C67-7A0CF01C119F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsedCars.Models", "..\UsedCars.Models\UsedCars.Models.csproj", "{828473B3-7796-4FF5-A074-F61C4DC217F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{546D9B23-8C81-40B9-9C67-7A0CF01C119F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{546D9B23-8C81-40B9-9C67-7A0CF01C119F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{546D9B23-8C81-40B9-9C67-7A0CF01C119F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{828473B3-7796-4FF5-A074-F61C4DC217F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{828473B3-7796-4FF5-A074-F61C4DC217F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{828473B3-7796-4FF5-A074-F61C4DC217F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{828473B3-7796-4FF5-A074-F61C4DC217F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
