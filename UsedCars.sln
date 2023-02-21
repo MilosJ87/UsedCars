@@ -14,6 +14,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsedCars.Repository", "..\U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsedCars.Models", "..\UsedCars.Models\UsedCars.Models.csproj", "{828473B3-7796-4FF5-A074-F61C4DC217F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsedCars.Services", "..\UsedCars.Services\UsedCars.Services.csproj", "{136CBDF3-A2BB-41BF-854B-B23E01CF7677}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsedCars.Common", "..\UsedCars.Common\UsedCars.Common.csproj", "{59C0DFAD-55BD-46B4-BE3B-46E8E2D9A89E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +40,14 @@ Global
 		{828473B3-7796-4FF5-A074-F61C4DC217F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{828473B3-7796-4FF5-A074-F61C4DC217F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{828473B3-7796-4FF5-A074-F61C4DC217F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{136CBDF3-A2BB-41BF-854B-B23E01CF7677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{136CBDF3-A2BB-41BF-854B-B23E01CF7677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{136CBDF3-A2BB-41BF-854B-B23E01CF7677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{136CBDF3-A2BB-41BF-854B-B23E01CF7677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59C0DFAD-55BD-46B4-BE3B-46E8E2D9A89E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59C0DFAD-55BD-46B4-BE3B-46E8E2D9A89E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59C0DFAD-55BD-46B4-BE3B-46E8E2D9A89E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59C0DFAD-55BD-46B4-BE3B-46E8E2D9A89E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
