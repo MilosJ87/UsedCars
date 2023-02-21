@@ -72,22 +72,22 @@ namespace UsedCars.Controllers
         }
 
         [HttpPut("{additionalequipmentId}")]
-        public IActionResult UpdateEquipment(Guid additionalEquipmentId,
-            [FromBody] UpdateAdditionalEquipment updateAdditionalEquipment)
-        {
-            if (!_additionalEquipmentRepo.AdditionalEquipmentExists(additionalEquipmentId))
-            {
-                return NotFound();
-            }
+        //public IActionResult UpdateEquipment(Guid additionalEquipmentId,
+        //    [FromBody] UpdateAdditionalEquipment updateAdditionalEquipment)
+        //{
+        //    if (!_additionalEquipmentRepo.AdditionalEquipmentExists(additionalEquipmentId))
+        //    {
+        //        return NotFound();
+        //    }
 
-            var equipmentFromRepo = _additionalEquipmentRepo.GetById(additionalEquipmentId);
+        //    var equipmentFromRepo = _additionalEquipmentRepo.GetById(additionalEquipmentId);
 
-            _mapper.Map(updateAdditionalEquipment, equipmentFromRepo);
-            _additionalEquipmentRepo.Update(equipmentFromRepo);
-            _additionalEquipmentRepo.Save();
+        //    _mapper.Map(updateAdditionalEquipment, equipmentFromRepo);
+        //    _additionalEquipmentRepo.Update(equipmentFromRepo);
+        //    _additionalEquipmentRepo.Save();
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
         [HttpDelete("{additionalEquipmentId}")]
         public ActionResult DeleteEquipment(Guid additionalEquipmentId)

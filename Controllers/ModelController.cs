@@ -20,65 +20,65 @@ namespace UsedCars.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
-        public ActionResult GetModels()
-        {
-            var models = _mapper.Map<List<ModelDto>>(_modelRepo.GetModels());
-            return Ok(models);
-        }
+        //[HttpGet]
+        //public ActionResult GetModels()
+        //{
+        //    var models = _mapper.Map<List<ModelDto>>(_modelRepo.get());
+        //    return Ok(models);
+        //}
 
-        [HttpGet("{modelId}", Name = "GetModel")]
-        public IActionResult GetModel(Guid modelId)
-        {
-            var model = _modelRepo.GetModel(modelId);
+        //[HttpGet("{modelId}", Name = "GetModel")]
+        //public IActionResult GetModel(Guid modelId)
+        //{
+        //    var model = _modelRepo.GetModel(modelId);
 
-            return Ok(_mapper.Map<ModelDto>(model));
-        }
+        //    return Ok(_mapper.Map<ModelDto>(model));
+        //}
 
-        [HttpPost]
-        public IActionResult CreateModel([FromBody] ModelDto modelCreate)
-        {
-            var modelEntity = _mapper.Map<Model>(modelCreate);
-            _modelRepo.CreateModel(modelEntity);
+        //[HttpPost]
+        //public IActionResult CreateModel([FromBody] ModelDto modelCreate)
+        //{
+        //    var modelEntity = _mapper.Map<Model>(modelCreate);
+        //    _modelRepo.CreateModel(modelEntity);
 
-            var modelToReturn = _mapper.Map<ModelDto>(modelEntity);
-            return Ok(modelToReturn);
-        }
+        //    var modelToReturn = _mapper.Map<ModelDto>(modelEntity);
+        //    return Ok(modelToReturn);
+        //}
 
-        [HttpPut("{modelId}")]
-        public IActionResult UpdateModel(Guid modelId, [FromBody] ModelDto modelDtoUpdate)
-        {
-            if (!_modelRepo.ModelExists(modelId))
-            {
-                return NotFound();
-            }
+        //[HttpPut("{modelId}")]
+        //public IActionResult UpdateModel(Guid modelId, [FromBody] ModelDto modelDtoUpdate)
+        //{
+        //    if (!_modelRepo.ModelExists(modelId))
+        //    {
+        //        return NotFound();
+        //    }
 
-            var modelFromRepo = _modelRepo.GetModel(modelId);
+        //    var modelFromRepo = _modelRepo.GetModel(modelId);
 
-            _mapper.Map(modelDtoUpdate, modelFromRepo);
+        //    _mapper.Map(modelDtoUpdate, modelFromRepo);
 
-            _modelRepo.UpdateModel(modelFromRepo);
+        //    _modelRepo.UpdateModel(modelFromRepo);
 
-            _modelRepo.Save();
+        //    _modelRepo.Save();
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
-        [HttpDelete("{deleteId}")]
-        public ActionResult DeleteModel(Guid modelId)
-        {
-            var modelFromRepo = _modelRepo.GetModel(modelId);
+        //[HttpDelete("{deleteId}")]
+        //public ActionResult DeleteModel(Guid modelId)
+        //{
+        //    var modelFromRepo = _modelRepo.(modelId);
 
-            if (modelFromRepo == null)
-            {
-                return NotFound();
-            }
-            _modelRepo.DeleteModel(modelFromRepo);
-            _modelRepo.Save();
+        //    if (modelFromRepo == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    _modelRepo.DeleteModel(modelFromRepo);
+        //    _modelRepo.Save();
 
-            return NoContent();
+        //    return NoContent();
 
-        }
+        //}
                 
     }
 }

@@ -9,9 +9,11 @@ using UsedCars.Configuration;
 using UsedCars.DbContexts;
 using UsedCars.Extensions;
 using UsedCars.GenericRepository;
+using UsedCars.Profiles;
 using UsedCars.Repository.AdditionalEquipment;
 using UsedCars.Repository.Category;
 using UsedCars.Services;
+using UsedCars.Services.VehicleService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +47,7 @@ builder.Services.AddDistributedMemoryCache();
 
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddAutoMapper(typeof(VehicleProfile));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddScoped<IAdditionalEquipmentRepo, AdditionalEquipmentRepo>();
@@ -52,6 +55,7 @@ builder.Services.AddScoped<IModelRepo, ModelRepo>();
 builder.Services.AddScoped<IMakeRepo, MakeRepo>();
 builder.Services.AddScoped<IVehicleRepo, VehicleRepo>();
 builder.Services.AddScoped<ICategoryRepo, CategoryRepo>();
+builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddSwaggerGen();
 var dbConnectionString = builder.Configuration.GetConnectionString("DBConnectionString");
