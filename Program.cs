@@ -9,6 +9,8 @@ using UsedCars.Configuration;
 using UsedCars.DbContexts;
 using UsedCars.Extensions;
 using UsedCars.GenericRepository;
+using UsedCars.Repository.AdditionalEquipment;
+using UsedCars.Repository.Category;
 using UsedCars.Services;
 
 var builder = WebApplication.CreateBuilder(args);

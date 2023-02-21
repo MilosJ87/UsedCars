@@ -22,14 +22,14 @@ namespace UsedCars.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<MakeDto>> GetMakes()
         {
-            var makesFromRepo = _makeRepo.GetMakes();
+            var makesFromRepo = _makeRepo.();
             return Ok(_mapper.Map<IEnumerable<MakeDto>>(makesFromRepo));
         }
 
         [HttpGet("{makeId}", Name = "GetMake")]
         public IActionResult GetMake(Guid makeId)
         {
-            var make = _makeRepo.GetMake(makeId);
+            var make = _makeRepo.GetById(makeId);
             return Ok(make);
         }
 
@@ -37,7 +37,7 @@ namespace UsedCars.Controllers
         public ActionResult CreateMake([FromBody] MakeDto createMake)
         {
             var makeEntity = _mapper.Map<Make>(createMake);
-            _makeRepo.CreateMake(makeEntity);
+            _makeRepo.Insert(makeEntity);
             _makeRepo.Save();
 
             var makeToReturn = _mapper.Map<MakeDto>(makeEntity);
@@ -54,10 +54,10 @@ namespace UsedCars.Controllers
                 return NotFound();
             }
 
-            var makeFromRepo = _makeRepo.GetMake(makeId);
+            var makeFromRepo = _makeRepo.GetById(makeId);
 
             _mapper.Map(updateMakeDto, makeFromRepo);
-            _makeRepo.UpdateMake(makeFromRepo);
+            _makeRepo.Update(makeFromRepo);
             _makeRepo.Save();
 
             return NoContent();
@@ -67,13 +67,13 @@ namespace UsedCars.Controllers
         [HttpDelete("{makeId}")]
         public ActionResult DeleteMake(Guid makeId)
         {
-            var makeFromRepo = _makeRepo.GetMake(makeId);
+            var makeFromRepo = _makeRepo.GetById(makeId);
            
             if (makeFromRepo == null)
             {
                 return NotFound();
             }
-            _makeRepo.DeleteMake(makeFromRepo);
+            _makeRepo.Delete(makeFromRepo);
             _makeRepo.Save();
 
             return NoContent();

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using UsedCars.Entities;
 using UsedCars.Models;
-using UsedCars.Services;
+using UsedCars.Repository.Category;
 
 namespace UsedCars.Controllers
 {
@@ -22,9 +22,9 @@ namespace UsedCars.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetCategories()
+        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
-            var categories = _mapper.Map<List<CategoryDto>>(_categoryRepo.GetCategories());
+            var categories = await _categoryRepo.GetAllAsync();
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -32,9 +32,9 @@ namespace UsedCars.Controllers
             return Ok(categories);
         }
         [HttpGet("{categoryId}", Name="GetCategory")]
-        public IActionResult GetCategory(Guid categoryId)
+        public async Task<IActionResult> GetCategory(Guid categoryId)
         {
-            var category = _categoryRepo.GetCategory(categoryId);
+            var category = await _categoryRepo.GetById(categoryId);
             if (category==null)
             {
                 return NotFound();
@@ -49,7 +49,7 @@ namespace UsedCars.Controllers
            
 
             var categoryEntity = _mapper.Map<Category>(categoryCreate);
-            _categoryRepo.CreateCategory(categoryEntity);
+            _categoryRepo.Insert(categoryEntity);
             _categoryRepo.Save();
 
             var categoryToReturn = _mapper.Map<CategoryDto>(categoryEntity);
@@ -58,21 +58,21 @@ namespace UsedCars.Controllers
         }
 
         [HttpPut("{categoryId}")]
-        public IActionResult UpdateCategory(Guid categoryId, [FromBody] UpdateCategoryDto category)
+        public async Task<IActionResult> UpdateCategory(Guid categoryId, [FromBody] UpdateCategoryDto category)
         {
             if (!_categoryRepo.CategoryExsits(categoryId))
             {
                 return NotFound();
             }
 
-            var categoryFromRepo = _categoryRepo.GetCategory(categoryId);
+            var categoryFromRepo = _categoryRepo.GetById(categoryId);
 
             if (categoryFromRepo == null)
             {
                 var categoryToAdd = _mapper.Map<Category>(category);
                 categoryToAdd.Id = categoryId;
 
-                _categoryRepo.CreateCategory(categoryToAdd);
+                _categoryRepo.Insert(categoryToAdd);
 
                 _categoryRepo.Save();
 
@@ -84,7 +84,7 @@ namespace UsedCars.Controllers
 
             _mapper.Map(category, categoryFromRepo);
 
-            _categoryRepo.UpdateCategory(categoryFromRepo);
+            _categoryRepo.Update(await categoryFromRepo);
 
             _categoryRepo.Save();
 
@@ -95,14 +95,14 @@ namespace UsedCars.Controllers
         [HttpDelete("{categoryId}")]
         public ActionResult DeleteCategory(Guid categoryId)
         {
-            var categoryFromRepo = _categoryRepo.GetCategory(categoryId);
+            var categoryFromRepo = _categoryRepo.GetById(categoryId);
 
             if (categoryFromRepo==null)
             {
                 return NotFound();
             }
 
-            _categoryRepo.DeleteCategory(categoryFromRepo);
+            _categoryRepo.Delete(categoryFromRepo);
             _categoryRepo.Save();
 
             return NoContent();
@@ -112,34 +112,7 @@ namespace UsedCars.Controllers
 
 
 
-        //[HttpPatch("{categoryId}")]
-        //public ActionResult PartiallyUpdateCategory(Guid categoryId, JsonPatchDocument<UpdateCategoryDto> patchDocument )
-        //{
-        //    if (!_categoryRepo.CategoryExsits(categoryId))
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var categoryFromRepo = _categoryRepo.GetCategory(categoryId);
-
-        //    if (categoryFromRepo == null)
-        //    {
-        //        var categoryToAdd = _mapper.Map<Category>(category);
-        //        categoryToAdd.Id = category.Id;
-
-        //        _categoryRepo.CreateCategory(categoryToAdd);
-
-        //        _categoryRepo.Save();
-
-        //        var categoryToReturn = (_mapper.Map<CategoryDto>(categoryToAdd));
-
-        //        return CreatedAtRoute("GetCategory", new { categoryId = categoryToReturn.Id }, categoryToReturn);
-
-
-
-        //    }
-        //}
-
+     
 
 
     }

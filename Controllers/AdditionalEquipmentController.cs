@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using UsedCars.Entities;
 using UsedCars.Models;
-using UsedCars.Services;
+using UsedCars.Repository.AdditionalEquipment;
 
 namespace UsedCars.Controllers
 {
@@ -23,7 +23,7 @@ namespace UsedCars.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<AdditionalEquipmentDto>> GetAdditionalEquipment()
         {
-            var equipmentFromRepo = _additionalEquipmentRepo.GetAdditionalEquipments();
+            var equipmentFromRepo = _additionalEquipmentRepo.GetAllAsync();
 
             return Ok(_mapper.Map<IEnumerable<AdditionalEquipmentDto>>(equipmentFromRepo));
         }
@@ -31,7 +31,7 @@ namespace UsedCars.Controllers
         [HttpGet("{additionalEquipmentId}", Name = "GetAdditionalEquipment")]
         public IActionResult GetAdditionalEquipment(Guid additionalEquipmentId)
         {
-            var equipment = _additionalEquipmentRepo.GetAdditionalEquipment(additionalEquipmentId);
+            var equipment = _additionalEquipmentRepo.GetById(additionalEquipmentId);
             return Ok(equipment);
         }
 
@@ -62,7 +62,7 @@ namespace UsedCars.Controllers
         public ActionResult CreateAdditionalEquipment([FromBody] AdditionalEquipmentDto additionalEquipmentDtoCreate)
         {
             var additionalEquipmentEntity = _mapper.Map<AdditionalEquipment>(additionalEquipmentDtoCreate);
-            _additionalEquipmentRepo.CreateAdditionalEquipment(additionalEquipmentEntity);
+            _additionalEquipmentRepo.Insert(additionalEquipmentEntity);
             _additionalEquipmentRepo.Save();
 
             var equipmentToReturn = _mapper.Map<AdditionalEquipmentDto>(additionalEquipmentEntity);
@@ -80,10 +80,10 @@ namespace UsedCars.Controllers
                 return NotFound();
             }
 
-            var equipmentFromRepo = _additionalEquipmentRepo.GetAdditionalEquipment(additionalEquipmentId);
+            var equipmentFromRepo = _additionalEquipmentRepo.GetById(additionalEquipmentId);
 
             _mapper.Map(updateAdditionalEquipment, equipmentFromRepo);
-            _additionalEquipmentRepo.UpdateEquipment(equipmentFromRepo);
+            _additionalEquipmentRepo.Update(equipmentFromRepo);
             _additionalEquipmentRepo.Save();
 
             return NoContent();
@@ -92,14 +92,14 @@ namespace UsedCars.Controllers
         [HttpDelete("{additionalEquipmentId}")]
         public ActionResult DeleteEquipment(Guid additionalEquipmentId)
         {
-            var equipmentFromRepo = _additionalEquipmentRepo.GetAdditionalEquipment(additionalEquipmentId);
+            var equipmentFromRepo = _additionalEquipmentRepo.GetById(additionalEquipmentId);
 
             if (equipmentFromRepo == null)
             {
                 return NotFound();
             }
 
-            _additionalEquipmentRepo.DeleteEquipment(equipmentFromRepo);
+            _additionalEquipmentRepo.Delete(equipmentFromRepo);
             _additionalEquipmentRepo.Save();
 
             return NoContent();
