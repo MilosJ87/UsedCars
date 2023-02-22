@@ -13,6 +13,7 @@ using UsedCars.Profiles;
 using UsedCars.Repository.AdditionalEquipment;
 using UsedCars.Repository.Category;
 using UsedCars.Services;
+using UsedCars.Services.ModelService;
 using UsedCars.Services.VehicleService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -56,6 +57,7 @@ builder.Services.AddScoped<IMakeRepo, MakeRepo>();
 builder.Services.AddScoped<IVehicleRepo, VehicleRepo>();
 builder.Services.AddScoped<ICategoryRepo, CategoryRepo>();
 builder.Services.AddScoped<IVehicleService, VehicleService>();
+builder.Services.AddScoped<IModelService, ModelService>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddSwaggerGen();
 var dbConnectionString = builder.Configuration.GetConnectionString("DBConnectionString");

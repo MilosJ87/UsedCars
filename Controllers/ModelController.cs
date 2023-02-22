@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using UsedCars.Entities;
 using UsedCars.Models;
 using UsedCars.Services;
+using UsedCars.Services.ModelService;
 
 namespace UsedCars.Controllers
 {
@@ -10,75 +11,45 @@ namespace UsedCars.Controllers
     [ApiController]
     public class ModelController : ControllerBase
     {
-        private readonly IModelRepo _modelRepo;
+        private readonly IModelService _modelService;
 
-        private readonly IMapper _mapper;
-
-        public ModelController(IModelRepo modelRepo, IMapper mapper)
+        public ModelController(IModelService modelService)
         {
-            _modelRepo = modelRepo;
-            _mapper = mapper;
+            _modelService = modelService ?? throw new ArgumentNullException(nameof(modelService));
         }
 
-        //[HttpGet]
-        //public ActionResult GetModels()
-        //{
-        //    var models = _mapper.Map<List<ModelDto>>(_modelRepo.get());
-        //    return Ok(models);
-        //}
+        [HttpGet]
+        public async Task< ActionResult> GetModels()
+        {
+            var modelsToReturn = await _modelService.GetModels();
 
-        //[HttpGet("{modelId}", Name = "GetModel")]
-        //public IActionResult GetModel(Guid modelId)
-        //{
-        //    var model = _modelRepo.GetModel(modelId);
+            return Ok(modelsToReturn);
+        }
 
-        //    return Ok(_mapper.Map<ModelDto>(model));
-        //}
+        [HttpGet("{modelId}", Name = "GetModel")]
+        public IActionResult GetModel(Guid modelId)
+        {
+           var modelToReturn = _modelService.GetModel(modelId);
+            return Ok(modelToReturn);
+        }
 
-        //[HttpPost]
-        //public IActionResult CreateModel([FromBody] ModelDto modelCreate)
-        //{
-        //    var modelEntity = _mapper.Map<Model>(modelCreate);
-        //    _modelRepo.CreateModel(modelEntity);
+        [HttpPost]
+        public async Task<ActionResult<ModelDto>> CreateModel([FromBody] ModelDto modelCreate)
+        {
+            var modelToReturn = _modelService.CreateModel(modelCreate);
 
-        //    var modelToReturn = _mapper.Map<ModelDto>(modelEntity);
-        //    return Ok(modelToReturn);
-        //}
+            return Ok(modelToReturn);
+        }
 
-        //[HttpPut("{modelId}")]
-        //public IActionResult UpdateModel(Guid modelId, [FromBody] ModelDto modelDtoUpdate)
-        //{
-        //    if (!_modelRepo.ModelExists(modelId))
-        //    {
-        //        return NotFound();
-        //    }
 
-        //    var modelFromRepo = _modelRepo.GetModel(modelId);
 
-        //    _mapper.Map(modelDtoUpdate, modelFromRepo);
+        [HttpDelete("{deleteId}")]
+        public ActionResult DeleteModel(Guid modelId)
+        {
+            var modelToDelete = _modelService.DeleteModel(modelId);
+            return NoContent();
 
-        //    _modelRepo.UpdateModel(modelFromRepo);
+        }
 
-        //    _modelRepo.Save();
-
-        //    return NoContent();
-        //}
-
-        //[HttpDelete("{deleteId}")]
-        //public ActionResult DeleteModel(Guid modelId)
-        //{
-        //    var modelFromRepo = _modelRepo.(modelId);
-
-        //    if (modelFromRepo == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    _modelRepo.DeleteModel(modelFromRepo);
-        //    _modelRepo.Save();
-
-        //    return NoContent();
-
-        //}
-                
     }
 }
