@@ -48,102 +48,38 @@ namespace UsedCars.Controllers
                 vehicleToCreate);
         }
 
-        //[HttpPut("{vehicleId}")]
-        //[ProducesResponseType(204)]
-        //[ProducesResponseType(400)]
-        //public async Task<IActionResult> UpdateVehicleAsync(Guid vehicleId, Guid additionalEquipmentId,
-        //    [FromBody] VehicleDto vehicle)
-        //{
+        [HttpPut("{vehicleId}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        public async Task<IActionResult> UpdateVehicleAsync(Guid vehicleId, [FromBody] VehicleDto vehicle)
+        {
+            if (vehicle == null || vehicle.Id != vehicleId)
+            {
+                return BadRequest();
+            }
 
-        //    if (!_vehicleRepo.VehicleExists(vehicleId))
-        //    {
-        //        return NotFound();
-        //    }
+            var updatedVehicle = await _vehicleService.UpdateVehicle(vehicle);
 
-        //    var vehicleFromRepo = await _vehicleRepo.GetVehicleAsync(vehicleId);
-        //    //Upserting
-        //    if (vehicleFromRepo == null)
-        //    {
-        //        var vehicleToAdd = _mapper.Map<Vehicle>(vehicle);
-        //        vehicleToAdd.Id = vehicleId;
+            if (updatedVehicle == null)
+            {
+                return BadRequest();
+            }
 
-        //        await _vehicleRepo.AddVehicleAsync(vehicle.CategoryId,
-        //               vehicle.ModelId, vehicle.MakeId, additionalEquipmentId, vehicleToAdd);
+            return NoContent();
 
-        //        _vehicleRepo.Save();
+        }
 
-        //        var vehicleToReturn = _mapper.Map<VehicleDto>(vehicleToAdd);
+        [HttpPatch("{vehicleId}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        public async Task<ActionResult> PartiallyUpdateVehicleAsync(Guid vehicleId, Guid additionalEquipmentId,
+            [FromBody] JsonPatchDocument<VehicleDto> patchDocument)
+        {
+            _vehicleService.PatchVehicle(vehicleId,patchDocument);
 
-        //        return CreatedAtRoute("GetVehicle", new{vehicle.CategoryId,
-        //               vehicle.ModelId,
-        //               vehicle.MakeId,
-        //               vehicleId = vehicleToReturn.Id},
-        //               vehicleToReturn);
-        //    }
 
-        //    _mapper.Map(vehicle, vehicleFromRepo);
-
-        //    _vehicleRepo.UpdateVehicle(vehicleFromRepo);
-
-        //    _vehicleRepo.Save();
-
-        //    return NoContent();
-
-        //}
-
-        //[HttpPatch("{vehicleId}")]
-        //[ProducesResponseType(204)]
-        //[ProducesResponseType(400)]
-        //public async Task<ActionResult> PartiallyUpdateVehicleAsync(Guid vehicleId, Guid additionalEquipmentId,
-        //    [FromBody] JsonPatchDocument<VehicleDto> patchDocument)
-        //{
-        //    if (!_vehicleRepo.VehicleExists(vehicleId))
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var vehicleFromRepo = await _vehicleRepo.GetVehicleAsync(vehicleId);
-
-        //    if (vehicleFromRepo == null)
-        //    {
-        //        var vehicleDto = new VehicleDto();
-        //        patchDocument.ApplyTo(vehicleDto);
-
-        //        if (!TryValidateModel(vehicleDto))
-        //        {
-        //            return ValidationProblem(ModelState);
-        //        }
-
-        //        var vehicleToAdd = _mapper.Map<Vehicle>(vehicleDto);
-        //        vehicleToAdd.Id = vehicleId;
-
-        //        _vehicleRepo.AddVehicleAsync(vehicleDto.CategoryId, vehicleDto.ModelId,
-        //            vehicleDto.MakeId, additionalEquipmentId, vehicleToAdd);
-
-        //        _vehicleRepo.Save();
-
-        //        var vehicleToReturn = _mapper.Map<VehicleDto>(vehicleToAdd);
-
-        //        return CreatedAtRoute("GetVehicle", new { vehicleDto.CategoryId, vehicleDto.ModelId, vehicleDto.MakeId, vehicleId = vehicleToReturn.Id }, vehicleToReturn);
-        //    }
-
-        //    var vehicleToPatch = _mapper.Map<VehicleDto>(vehicleFromRepo);
-
-        //    patchDocument.ApplyTo(vehicleToPatch);
-
-        //    if (!TryValidateModel(vehicleToPatch))
-        //    {
-        //        return ValidationProblem(ModelState);
-        //    }
-
-        //    _mapper.Map(vehicleToPatch, vehicleFromRepo);
-
-        //    _vehicleRepo.UpdateVehicle(vehicleFromRepo);
-
-        //    _vehicleRepo.Save();
-
-        //    return NoContent();
-        //}
+            return NoContent();
+        }
 
         [HttpDelete("{vehicleId}")]
         public async Task<ActionResult> DeleteVehicleAsync(Guid vehicleId)
