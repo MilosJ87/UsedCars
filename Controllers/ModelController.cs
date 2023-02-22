@@ -34,7 +34,7 @@ namespace UsedCars.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ModelDto>> CreateModel([FromBody] ModelDto modelCreate)
+        public async Task<ActionResult<MakeDto>> CreateModel([FromBody] MakeDto modelCreate)
         {
             var modelToReturn = _modelService.CreateModel(modelCreate);
 
