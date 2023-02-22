@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using UsedCars.Entities;
 using UsedCars.Models;
 using UsedCars.Repository.AdditionalEquipment;
+using UsedCars.Services.AdditionalEquipment;
 
 namespace UsedCars.Controllers
 {
@@ -10,99 +11,60 @@ namespace UsedCars.Controllers
     [Route("api/additionalequipment")]
     public class AdditionalEquipmentController : ControllerBase
     {
-        private readonly IAdditionalEquipmentRepo _additionalEquipmentRepo;
+        private readonly IAdditionalEquipmentService _additionalService;
 
         private readonly IMapper _mapper;
 
-        public AdditionalEquipmentController(IAdditionalEquipmentRepo additionalEquipmentRepo, IMapper mapper)
+        public AdditionalEquipmentController(IAdditionalEquipmentService additionalService)
         {
-            _additionalEquipmentRepo = additionalEquipmentRepo;
-            _mapper = mapper;
+            _additionalService = additionalService ?? throw new ArgumentNullException(nameof(additionalService));
+           
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<AdditionalEquipmentDto>> GetAdditionalEquipment()
         {
-            var equipmentFromRepo = _additionalEquipmentRepo.GetAllAsync();
+            var equipmentFromRepo = _additionalService.GetEquipments();
 
-            return Ok(_mapper.Map<IEnumerable<AdditionalEquipmentDto>>(equipmentFromRepo));
+            return Ok(equipmentFromRepo);
         }
 
         [HttpGet("{additionalEquipmentId}", Name = "GetAdditionalEquipment")]
         public IActionResult GetAdditionalEquipment(Guid additionalEquipmentId)
         {
-            var equipment = _additionalEquipmentRepo.GetById(additionalEquipmentId);
+            var equipment = _additionalService.GetEquipment(additionalEquipmentId);
             return Ok(equipment);
         }
 
         [HttpGet("{additionalEquipmentId}/vehicle")]
         public IActionResult GetVehicleByEquipment(Guid additionalEquipmentId)
         {
-            if (!_additionalEquipmentRepo.AdditionalEquipmentExists(additionalEquipmentId))
-            {
-                return NotFound();
-            }
-
-            var equipment = _mapper.Map<List<VehicleDto>>(
-                _additionalEquipmentRepo.GetVehicleByEquipment
-                (additionalEquipmentId));
-            return Ok(equipment);
+            var equipmentByVehicle = _additionalService.GetVehicleByEquipment(additionalEquipmentId);
+            
+            return Ok(equipmentByVehicle);
         }
 
         [HttpGet("{vehicleId}/additionalEquipment")]
         public IActionResult GetAdditionalEquipmentByVehicle(Guid vehicleId)
         {
-            var vehicle = _mapper.Map<List<AdditionalEquipmentDto>>(
-                _additionalEquipmentRepo.
-                GetEquipmentByVehicle(vehicleId));
-            return Ok(vehicle);
+            var vehicleByEquipment = _additionalService.GetEquipmentByVehicle(vehicleId);
+            return Ok(vehicleByEquipment);
         }
+        [HttpPost]
 
         [HttpPost]
         public ActionResult CreateAdditionalEquipment([FromBody] AdditionalEquipmentDto additionalEquipmentDtoCreate)
         {
-            var additionalEquipmentEntity = _mapper.Map<AdditionalEquipment>(additionalEquipmentDtoCreate);
-            _additionalEquipmentRepo.Insert(additionalEquipmentEntity);
-            _additionalEquipmentRepo.Save();
+            var equipment = _additionalService.CreateEquipment(additionalEquipmentDtoCreate);
 
-            var equipmentToReturn = _mapper.Map<AdditionalEquipmentDto>(additionalEquipmentEntity);
-
-            return Ok(equipmentToReturn);
-
+            return Ok(equipment);
         }
-
-        [HttpPut("{additionalequipmentId}")]
-        //public IActionResult UpdateEquipment(Guid additionalEquipmentId,
-        //    [FromBody] UpdateAdditionalEquipment updateAdditionalEquipment)
-        //{
-        //    if (!_additionalEquipmentRepo.AdditionalEquipmentExists(additionalEquipmentId))
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var equipmentFromRepo = _additionalEquipmentRepo.GetById(additionalEquipmentId);
-
-        //    _mapper.Map(updateAdditionalEquipment, equipmentFromRepo);
-        //    _additionalEquipmentRepo.Update(equipmentFromRepo);
-        //    _additionalEquipmentRepo.Save();
-
-        //    return NoContent();
-        //}
 
         [HttpDelete("{additionalEquipmentId}")]
         public ActionResult DeleteEquipment(Guid additionalEquipmentId)
         {
-            var equipmentFromRepo = _additionalEquipmentRepo.GetById(additionalEquipmentId);
-
-            if (equipmentFromRepo == null)
-            {
-                return NotFound();
-            }
-
-            _additionalEquipmentRepo.Delete(equipmentFromRepo);
-            _additionalEquipmentRepo.Save();
-
-            return NoContent();
+            var equipmentToDelete = _additionalService.DeleteEquipment(additionalEquipmentId);
+            return Ok(equipmentToDelete);
 
         }
     }
