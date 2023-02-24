@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UsedCars.Commons\UsedCars.Common.csproj" />
     <ProjectReference Include="..\UsedCars.Models\UsedCars.Models.csproj" />
     <ProjectReference Include="..\UsedCars.Repository\UsedCars.Repository.csproj" />
   </ItemGroup>

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using UsedCars.Entities;
 using UsedCars.Models;
-using UsedCars.Repository.Category;
+using UsedCars.Repository;
 using UsedCars.Services;
 
 namespace UsedCars.Controllers

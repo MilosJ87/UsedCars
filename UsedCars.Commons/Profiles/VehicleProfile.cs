@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using UsedCars.Entities;
 using UsedCars.Models;
 
-namespace UsedCars.Profiles
+namespace UsedCars.Common
 {
     public class VehicleProfile : Profile
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.JsonPatch;
 using UsedCars.Models;
 
-namespace UsedCars.Services.VehicleService
+namespace UsedCars.Services
 {
     public interface IVehicleService
     {

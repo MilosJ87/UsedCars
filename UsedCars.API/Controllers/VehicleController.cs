@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using UsedCars.Decorators;
 using UsedCars.Models;
-using UsedCars.Services.VehicleService;
+using UsedCars.Services;
 
 namespace UsedCars.Controllers
 {

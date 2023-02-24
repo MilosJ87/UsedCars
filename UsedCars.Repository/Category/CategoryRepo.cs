@@ -3,7 +3,7 @@ using UsedCars.DbContexts;
 using UsedCars.Entities;
 using UsedCars.GenericRepository;
 
-namespace UsedCars.Repository.Category
+namespace UsedCars.Repository
 {
     public class CategoryRepo : GenericRepository<Entities.Category>, ICategoryRepo
     {

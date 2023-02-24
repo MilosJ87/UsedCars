@@ -10,7 +10,6 @@
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
           "Microsoft.AspNetCore.JsonPatch": "6.0.10",
-          "UsedCars.Common": "1.0.0",
           "UsedCars.Models": "1.0.0",
           "UsedCars.Repository": "1.0.0"
         },
@@ -503,16 +502,6 @@
           }
         }
       },
-      "UsedCars.Common/1.0.0": {
-        "dependencies": {
-          "AutoMapper": "12.0.0",
-          "UsedCars.Data": "1.0.0",
-          "UsedCars.Models": "1.0.0"
-        },
-        "runtime": {
-          "UsedCars.Common.dll": {}
-        }
-      },
       "UsedCars.Data/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "6.0.9",
@@ -855,11 +844,6 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
-    },
-    "UsedCars.Common/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     },
     "UsedCars.Data/1.0.0": {
       "type": "project",

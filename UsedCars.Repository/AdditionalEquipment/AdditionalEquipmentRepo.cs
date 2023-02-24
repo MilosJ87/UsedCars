@@ -5,7 +5,7 @@ using UsedCars.DbContexts;
 using UsedCars.Entities;
 using UsedCars.GenericRepository;
 
-namespace UsedCars.Repository.AdditionalEquipment
+namespace UsedCars.Repository
 {
     public class AdditionalEquipmentRepo : GenericRepository<Entities.AdditionalEquipment>, IAdditionalService
     {

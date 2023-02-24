@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UsedCars.Entities;
 using UsedCars.Models;
-using UsedCars.Profiles;
+using UsedCars.Repository;
 
-namespace UsedCars.Services.ModelService
+namespace UsedCars.Services
 {
     public class ModelService : IModelService
     {

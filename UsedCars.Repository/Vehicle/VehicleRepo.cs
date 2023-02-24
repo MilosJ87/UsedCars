@@ -5,7 +5,7 @@ using UsedCars.DbContexts;
 using UsedCars.Entities;
 using UsedCars.GenericRepository;
 
-namespace UsedCars.Services
+namespace UsedCars.Repository
 {
     public class VehicleRepo : GenericRepository<Entities.Vehicle>, IDisposable, IVehicleRepo
     {

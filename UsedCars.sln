@@ -3,7 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsedCars.API", "UsedCars.API\UsedCars.API.csproj", "{4CFD727A-D2DA-4EF9-A506-05F75BBEE780}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsedCars.API", "UsedCars.API\UsedCars.API.csproj", "{4CFD727A-D2DA-4EF9-A506-05F75BBEE780}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3267794F-3676-4005-B884-B20D67496856} = {3267794F-3676-4005-B884-B20D67496856}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsedCars.Common", "UsedCars.Commons\UsedCars.Common.csproj", "{3267794F-3676-4005-B884-B20D67496856}"
 EndProject

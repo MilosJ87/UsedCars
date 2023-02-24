@@ -1,7 +1,7 @@
 ﻿using UsedCars.Entities;
 using UsedCars.GenericRepository;
 
-namespace UsedCars.Repository.AdditionalEquipment
+namespace UsedCars.Repository
 {
     public interface IAdditionalService : IGenericRepository<Entities.AdditionalEquipment>
     {

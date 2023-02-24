@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using UsedCars.Entities;
 using UsedCars.Models;
 using UsedCars.Services;
-using UsedCars.Services.ModelService;
+
 
 namespace UsedCars.Controllers
 {

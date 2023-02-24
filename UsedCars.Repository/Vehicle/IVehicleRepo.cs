@@ -1,6 +1,6 @@
 ﻿using UsedCars.GenericRepository;
 
-namespace UsedCars.Services
+namespace UsedCars.Repository
 {
     public interface IVehicleRepo : IGenericRepository<Entities.Vehicle>
     {

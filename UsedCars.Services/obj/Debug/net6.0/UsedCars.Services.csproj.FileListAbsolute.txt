@@ -25,11 +25,9 @@ F:\Projects\UsedCars\UsedCars.Services\obj\Debug\net6.0\UsedCars.Services.pdb
 F:\Projects\UsedCars\UsedCars.Services\bin\Debug\net6.0\UsedCars.Services.deps.json
 F:\Projects\UsedCars\UsedCars.Services\bin\Debug\net6.0\UsedCars.Services.dll
 F:\Projects\UsedCars\UsedCars.Services\bin\Debug\net6.0\UsedCars.Services.pdb
-F:\Projects\UsedCars\UsedCars.Services\bin\Debug\net6.0\UsedCars.Common.dll
 F:\Projects\UsedCars\UsedCars.Services\bin\Debug\net6.0\UsedCars.Data.dll
 F:\Projects\UsedCars\UsedCars.Services\bin\Debug\net6.0\UsedCars.Models.dll
 F:\Projects\UsedCars\UsedCars.Services\bin\Debug\net6.0\UsedCars.Repository.dll
-F:\Projects\UsedCars\UsedCars.Services\bin\Debug\net6.0\UsedCars.Common.pdb
 F:\Projects\UsedCars\UsedCars.Services\bin\Debug\net6.0\UsedCars.Models.pdb
 F:\Projects\UsedCars\UsedCars.Services\bin\Debug\net6.0\UsedCars.Repository.pdb
 F:\Projects\UsedCars\UsedCars.Services\bin\Debug\net6.0\UsedCars.Data.pdb

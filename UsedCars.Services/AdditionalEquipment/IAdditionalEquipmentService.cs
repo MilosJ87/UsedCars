@@ -1,6 +1,6 @@
 ﻿using UsedCars.Models;
 
-namespace UsedCars.Services.AdditionalEquipment
+namespace UsedCars.Services
 {
     public interface IAdditionalEquipmentService
     {

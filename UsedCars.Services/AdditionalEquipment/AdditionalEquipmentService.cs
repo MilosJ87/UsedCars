@@ -6,10 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UsedCars.Entities;
 using UsedCars.Models;
-using UsedCars.Repository.AdditionalEquipment;
-using UsedCars.Repository.Category;
+using UsedCars.Repository;
 
-namespace UsedCars.Services.AdditionalEquipment
+namespace UsedCars.Services
 {
     public class AdditionalEquipmentService : IAdditionalEquipmentService
     {

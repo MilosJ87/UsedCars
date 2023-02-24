@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using UsedCars.Entities;
 using UsedCars.Models;
-using UsedCars.Repository.AdditionalEquipment;
-using UsedCars.Services.AdditionalEquipment;
+using UsedCars.Repository;
+using UsedCars.Services;
 
 namespace UsedCars.Controllers
 {

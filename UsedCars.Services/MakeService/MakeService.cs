@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using UsedCars.Entities;
 using UsedCars.Models;
-using UsedCars.Services.ModelService;
+using UsedCars.Repository;
 
-namespace UsedCars.Services.MakeService
+namespace UsedCars.Services
 {
     public class MakeService : IMakeService
     {

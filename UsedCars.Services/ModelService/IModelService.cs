@@ -1,7 +1,7 @@
 ﻿using UsedCars.Entities;
 using UsedCars.Models;
 
-namespace UsedCars.Services.ModelService
+namespace UsedCars.Services
 {
     public interface IModelService
     {

@@ -6,8 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UsedCars.Entities;
 using UsedCars.Models;
-using UsedCars.Repository.Category;
-using UsedCars.Services.ModelService;
+using UsedCars.Repository;
 
 namespace UsedCars.Services
 {

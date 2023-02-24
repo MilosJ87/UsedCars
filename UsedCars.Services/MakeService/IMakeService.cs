@@ -1,6 +1,6 @@
 ﻿using UsedCars.Models;
 
-namespace UsedCars.Services.MakeService
+namespace UsedCars.Services
 {
     public interface IMakeService
     {
