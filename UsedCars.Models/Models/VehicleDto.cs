@@ -4,7 +4,7 @@
     {
         public Guid Id { get; set; }
 
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         public Guid CategoryId { get; set; }
 
@@ -12,7 +12,7 @@
 
         public Guid MakeId { get; set; }
 
-        List<AdditionalEquipmentDto> AdditionalEquipmentDtoList { get; set; }
+       public virtual List<AdditionalEquipmentDto>? AdditionalEquipmentDtoList { get; set; }
      }
 
  }

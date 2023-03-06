@@ -7,13 +7,13 @@ namespace UsedCars.Entities
     {
         [Key]
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public Guid CategoryId { get; set; }
-        public Category Category { get; set; }
-        public Guid ModelId { get; set; }
-        public Model Model { get; set; }
-        public Guid MakeId { get; set; }
-        public Make Make { get; set; }
-        public virtual ICollection<VehicleEquipment> AdditionalEquipments { get; set; }
+        public string? Name { get; set; }
+        public Guid? CategoryId { get; set; }
+        public Category? Category { get; set; }
+        public Guid? ModelId { get; set; }
+        public Model? Model { get; set; }
+        public Guid? MakeId { get; set; }
+        public Make? Make { get; set; }
+        public virtual ICollection<VehicleEquipment>? AdditionalEquipments { get; set; }
     }
 }

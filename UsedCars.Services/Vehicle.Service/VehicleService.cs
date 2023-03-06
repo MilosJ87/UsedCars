@@ -34,8 +34,8 @@ namespace UsedCars.Services
         public async Task<VehicleDto> CreateVehicleAsync(VehicleDto vehicle)
         {
             var vehicleEntity = _mapper.Map<Entities.Vehicle>(vehicle);
-            _vehicleRepo.Insert(vehicleEntity);
-            _vehicleRepo.Save();
+           await _vehicleRepo.InsertAsync(vehicleEntity);
+           await _vehicleRepo.SaveAsync();
 
             var vehicleToReturn = _mapper.Map<VehicleDto>(vehicleEntity);
 
@@ -56,9 +56,9 @@ namespace UsedCars.Services
                 var vehicleToAdd = _mapper.Map<Vehicle>(vehicle);
                 vehicleToAdd.Id = vehicle.Id;
 
-                _vehicleRepo.Insert(vehicleToAdd);
+                await _vehicleRepo.InsertAsync(vehicleToAdd);
 
-                _vehicleRepo.Save();
+                await _vehicleRepo.SaveAsync();
 
                 var vehicleToReturn = _mapper.Map<VehicleDto>(vehicleToAdd);
 
@@ -67,9 +67,9 @@ namespace UsedCars.Services
             }
             _mapper.Map(vehicle, vehicleFromRepo);
 
-            _vehicleRepo.Update(vehicleFromRepo);
+            await _vehicleRepo.UpdateAsync(vehicleFromRepo);
 
-            _vehicleRepo.Save();
+            await _vehicleRepo.SaveAsync();
 
             var vehiclToReturn = _mapper.Map<VehicleDto>(vehicleFromRepo);
 
@@ -96,9 +96,9 @@ namespace UsedCars.Services
                 var vehicleToAdd = _mapper.Map<Vehicle>(vehicleDto);
                 vehicleToAdd.Id = vehicleId;
 
-                _vehicleRepo.Insert(vehicleToAdd);
+               await _vehicleRepo.InsertAsync(vehicleToAdd);
 
-                 _vehicleRepo.Save();
+                await _vehicleRepo.SaveAsync();
 
                 var vehicleToReturn = _mapper.Map<VehicleDto>(vehicleToAdd);
 
@@ -113,9 +113,9 @@ namespace UsedCars.Services
 
             _mapper.Map(vehicleToPatch, vehicleFromRepo);
 
-            _vehicleRepo.Update(vehicleFromRepo);
+            await _vehicleRepo.UpdateAsync(vehicleFromRepo);
 
-             _vehicleRepo.Save();
+            await _vehicleRepo.SaveAsync();
 
             var updatedVehicle = await _vehicleRepo.GetById(vehicleId);
             var updatedVehicleDto = _mapper.Map<VehicleDto>(updatedVehicle);
@@ -128,7 +128,7 @@ namespace UsedCars.Services
             var vehicleFromRepo = await _vehicleRepo.GetById(vehicleId);
 
            await _vehicleRepo.Delete(vehicleFromRepo);
-            _vehicleRepo.Save();
+           await _vehicleRepo.SaveAsync();
         }
     }
 }

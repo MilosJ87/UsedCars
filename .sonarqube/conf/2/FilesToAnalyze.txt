@@ -1,0 +1,10 @@
+﻿F:\Projects\UsedCars\UsedCars.Models\Models\AdditionalEquipmentDto.cs
+F:\Projects\UsedCars\UsedCars.Models\Models\CategoryDto.cs
+F:\Projects\UsedCars\UsedCars.Models\Models\MakeDto.cs
+F:\Projects\UsedCars\UsedCars.Models\Models\ModelDto.cs
+F:\Projects\UsedCars\UsedCars.Models\Models\UpdateAdditionalEquipment.cs
+F:\Projects\UsedCars\UsedCars.Models\Models\UpdateCategoryDto.cs
+F:\Projects\UsedCars\UsedCars.Models\Models\UpdateMakeDto.cs
+F:\Projects\UsedCars\UsedCars.Models\Models\VehicleDto.cs
+F:\Projects\UsedCars\UsedCars.Models\Models\VehicleEquipmentDto.cs
+F:\Projects\UsedCars\UsedCars.Models\Properties\launchSettings.json

@@ -39,14 +39,11 @@ builder.Services.AddAuthentication("Bearer")
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddAutoMapper(typeof(VehicleProfile));
-
 builder.Services.RegisterServices();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 var dbConnectionString = builder.Configuration.GetConnectionString("DBConnectionString");
-
 builder.Services.AddDbContext<UsedCarsContext>(options => options.UseSqlServer(dbConnectionString));
 
 var app = builder.Build();

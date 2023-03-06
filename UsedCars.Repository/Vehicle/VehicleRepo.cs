@@ -7,7 +7,7 @@ using UsedCars.GenericRepository;
 
 namespace UsedCars.Repository
 {
-    public class VehicleRepo : GenericRepository<Entities.Vehicle>, IDisposable, IVehicleRepo
+    public class VehicleRepo : GenericRepository<Entities.Vehicle>, IVehicleRepo
     {
         public VehicleRepo(UsedCarsContext context) : base(context)
         {
@@ -55,18 +55,6 @@ namespace UsedCars.Repository
 
             return _context.Vehicles.Any(c => c.Id == vehicleId);
         }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-
-            }
-        }
+        
     }
 }

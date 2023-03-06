@@ -8,7 +8,7 @@ namespace UsedCars.Entities
     public class Category
     {
         public Guid Id { get; set; }           
-        public string Name { get; set; }
-        public ICollection<Vehicle> Vehicles { get; set; } 
+        public string? Name { get; set; }
+        public ICollection<Vehicle>? Vehicles { get; set; } 
     }
 }

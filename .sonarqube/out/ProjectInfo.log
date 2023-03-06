@@ -1,0 +1,30 @@
+Product projects
+---------------------------------------
+F:\Projects\UsedCars\UsedCars.Data\UsedCars.Data.csproj
+F:\Projects\UsedCars\UsedCars.Repository\UsedCars.Repository.csproj
+F:\Projects\UsedCars\UsedCars.Models\UsedCars.Models.csproj
+F:\Projects\UsedCars\UsedCars.Services\UsedCars.Services.csproj
+F:\Projects\UsedCars\UsedCars.Commons\UsedCars.Common.csproj
+F:\Projects\UsedCars\UsedCars.API\UsedCars.API.csproj
+
+
+Test projects
+---------------------------------------
+F:\Projects\UsedCars\UsedCars.Tests\UsedCars.Tests.csproj
+
+
+Invalid projects
+---------------------------------------
+{none}
+
+
+Skipped projects
+---------------------------------------
+{none}
+
+
+Excluded projects
+---------------------------------------
+{none}
+
+

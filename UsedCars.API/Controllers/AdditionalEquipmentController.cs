@@ -12,9 +12,7 @@ namespace UsedCars.Controllers
     public class AdditionalEquipmentController : ControllerBase
     {
         private readonly IAdditionalEquipmentService _additionalService;
-
-        private readonly IMapper _mapper;
-
+                
         public AdditionalEquipmentController(IAdditionalEquipmentService additionalService)
         {
             _additionalService = additionalService ?? throw new ArgumentNullException(nameof(additionalService));

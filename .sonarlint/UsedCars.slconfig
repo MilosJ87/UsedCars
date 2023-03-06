@@ -1,0 +1,16 @@
+{
+  "ServerUri": "http://localhost:9000/",
+  "Organization": null,
+  "ProjectKey": "UsedCarsKey",
+  "ProjectName": "UsedCars",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "AYay3GZSt4IuJkqs7vbo",
+      "ProfileTimestamp": "2023-03-05T17:40:33Z"
+    },
+    "Secrets": {
+      "ProfileKey": "AYay3GPvt4IuJkqs7vRQ",
+      "ProfileTimestamp": "2023-03-05T17:40:33Z"
+    }
+  }
+}

@@ -39,8 +39,8 @@ namespace UsedCars.Services
         public async Task<MakeDto> CreateMake(MakeDto makeDto)
         {
             var makeToCreate = _mapper.Map<Make>(makeDto);
-            _makeRepo.Insert(makeToCreate);
-            _makeRepo.Save();
+           await _makeRepo.InsertAsync(makeToCreate);
+           await _makeRepo.SaveAsync();
             var makeToReturn = _mapper.Map<MakeDto>(makeToCreate);
             return makeToReturn;
 
@@ -50,7 +50,7 @@ namespace UsedCars.Services
         {
             var makeToDelete = _makeRepo.GetById(makeId);
             var deleteModel = _makeRepo.Delete(makeToDelete);
-            _makeRepo.Save();
+            await _makeRepo.SaveAsync();
 
         }
     }

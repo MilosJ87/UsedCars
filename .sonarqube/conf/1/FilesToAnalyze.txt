@@ -1,0 +1,13 @@
+﻿F:\Projects\UsedCars\UsedCars.Repository\AdditionalEquipment\AdditionalEquipmentRepo.cs
+F:\Projects\UsedCars\UsedCars.Repository\AdditionalEquipment\IAdditionalEquipmentRepo.cs
+F:\Projects\UsedCars\UsedCars.Repository\Category\CategoryRepo.cs
+F:\Projects\UsedCars\UsedCars.Repository\Category\ICategoryRepo.cs
+F:\Projects\UsedCars\UsedCars.Repository\GenericRepository\GenericRepository.cs
+F:\Projects\UsedCars\UsedCars.Repository\GenericRepository\IGenericRepository.cs
+F:\Projects\UsedCars\UsedCars.Repository\Make\IMakeRepo.cs
+F:\Projects\UsedCars\UsedCars.Repository\Make\MakeRepo.cs
+F:\Projects\UsedCars\UsedCars.Repository\Model\IModelRepo.cs
+F:\Projects\UsedCars\UsedCars.Repository\Model\ModelRepo.cs
+F:\Projects\UsedCars\UsedCars.Repository\Vehicle\IVehicleRepo.cs
+F:\Projects\UsedCars\UsedCars.Repository\Vehicle\VehicleRepo.cs
+F:\Projects\UsedCars\UsedCars.Repository\Properties\launchSettings.json

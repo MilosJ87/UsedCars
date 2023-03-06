@@ -21,7 +21,7 @@ namespace UsedCars.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategories()
         {
-            var categoriesToReturn = _categoryService.GetCategories();
+            var categoriesToReturn = await _categoryService.GetCategories();
             return Ok(categoriesToReturn);
         }
         [HttpGet("{categoryId}", Name="GetCategory")]

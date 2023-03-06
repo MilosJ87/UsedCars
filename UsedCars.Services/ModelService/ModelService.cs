@@ -39,8 +39,8 @@ namespace UsedCars.Services
         public async Task<MakeDto> CreateModel(MakeDto modelDto)
         {
             var modelToCreate = _mapper.Map<Model>(modelDto);
-            _modelRepo.Insert(modelToCreate);
-            _modelRepo.Save();
+            await _modelRepo.InsertAsync(modelToCreate);
+            await _modelRepo.SaveAsync();
             var modelToReturn = _mapper.Map<MakeDto>(modelToCreate);
             return modelToReturn;
 
@@ -48,9 +48,9 @@ namespace UsedCars.Services
 
         public async Task DeleteModel(Guid modelId)
         {
-            var modelToDelete = _modelRepo.GetById(modelId);
-            var deleteModel = _modelRepo.Delete(modelToDelete);
-            _modelRepo.Save();
+            var modelToDelete = await _modelRepo.GetById(modelId);
+            await _modelRepo.Delete(modelToDelete);
+            await _modelRepo.SaveAsync();
                        
         }
     }

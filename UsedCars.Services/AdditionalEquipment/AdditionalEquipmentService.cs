@@ -40,8 +40,8 @@ namespace UsedCars.Services
         public async Task<AdditionalEquipmentDto> CreateEquipment(AdditionalEquipmentDto additionalEquipmentDto)
         {
             var equipemntToCreate = _mapper.Map<Entities.AdditionalEquipment>(additionalEquipmentDto);
-            _additionalEquipmentRepo.Insert(equipemntToCreate);
-            _additionalEquipmentRepo.Save();
+            await _additionalEquipmentRepo.InsertAsync(equipemntToCreate);
+            await _additionalEquipmentRepo.SaveAsync();
             var equipmentToReturn = _mapper.Map<AdditionalEquipmentDto>(equipemntToCreate);
             return equipmentToReturn;
 
@@ -49,7 +49,7 @@ namespace UsedCars.Services
        
         public async Task<AdditionalEquipmentDto> GetVehicleByEquipment(Guid additionalEquipmentId)
         {
-            var equipment = _additionalEquipmentRepo.GetVehicleByEquipment(additionalEquipmentId).FirstOrDefault();
+            var equipment =  _additionalEquipmentRepo.GetVehicleByEquipment(additionalEquipmentId).FirstOrDefault();
             var equipmentToReturn = _mapper.Map<AdditionalEquipmentDto>(equipment);
 
             return equipmentToReturn;
@@ -64,9 +64,9 @@ namespace UsedCars.Services
         }
         public async Task DeleteEquipment(Guid equipmentId)
         {
-            var equipmentToDelete = _additionalEquipmentRepo.GetById(equipmentId);
-            var deleteEquipment = _additionalEquipmentRepo.Delete(equipmentToDelete);
-            _additionalEquipmentRepo.Save();
+            var equipmentToDelete = await _additionalEquipmentRepo.GetById(equipmentId);
+            var deleteEquipment = await _additionalEquipmentRepo.Delete(equipmentToDelete);
+            await _additionalEquipmentRepo.SaveAsync();
 
         }
     }

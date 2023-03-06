@@ -19,9 +19,6 @@ C:\Users\Milos\source\repos\UsedCars.Services\obj\Debug\net6.0\UsedCars.Services
 C:\Users\Milos\source\repos\UsedCars.Services\obj\Debug\net6.0\refint\UsedCars.Services.dll
 C:\Users\Milos\source\repos\UsedCars.Services\obj\Debug\net6.0\UsedCars.Services.pdb
 C:\Users\Milos\source\repos\UsedCars.Services\obj\Debug\net6.0\ref\UsedCars.Services.dll
-F:\Projects\UsedCars\UsedCars.Services\obj\Debug\net6.0\UsedCars.Services.dll
-F:\Projects\UsedCars\UsedCars.Services\obj\Debug\net6.0\refint\UsedCars.Services.dll
-F:\Projects\UsedCars\UsedCars.Services\obj\Debug\net6.0\UsedCars.Services.pdb
 F:\Projects\UsedCars\UsedCars.Services\bin\Debug\net6.0\UsedCars.Services.deps.json
 F:\Projects\UsedCars\UsedCars.Services\bin\Debug\net6.0\UsedCars.Services.dll
 F:\Projects\UsedCars\UsedCars.Services\bin\Debug\net6.0\UsedCars.Services.pdb
@@ -37,4 +34,7 @@ F:\Projects\UsedCars\UsedCars.Services\obj\Debug\net6.0\UsedCars.Services.Assemb
 F:\Projects\UsedCars\UsedCars.Services\obj\Debug\net6.0\UsedCars.Services.AssemblyInfo.cs
 F:\Projects\UsedCars\UsedCars.Services\obj\Debug\net6.0\UsedCars.Services.csproj.CoreCompileInputs.cache
 F:\Projects\UsedCars\UsedCars.Services\obj\Debug\net6.0\UsedCars.Services.csproj.CopyComplete
+F:\Projects\UsedCars\UsedCars.Services\obj\Debug\net6.0\UsedCars.Services.dll
+F:\Projects\UsedCars\UsedCars.Services\obj\Debug\net6.0\refint\UsedCars.Services.dll
+F:\Projects\UsedCars\UsedCars.Services\obj\Debug\net6.0\UsedCars.Services.pdb
 F:\Projects\UsedCars\UsedCars.Services\obj\Debug\net6.0\ref\UsedCars.Services.dll

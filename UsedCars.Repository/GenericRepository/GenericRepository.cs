@@ -4,10 +4,10 @@ using UsedCars.DbContexts;
 namespace UsedCars.GenericRepository
 {
 
-    public class GenericRepository<T> :  IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private protected UsedCarsContext _context = null;
-        private DbSet<T> _entities = null;
+        private readonly DbSet<T> _entities = null;
         public GenericRepository(UsedCarsContext context)
         {
             this._context = context ?? throw new ArgumentNullException(nameof(context));
@@ -20,28 +20,45 @@ namespace UsedCars.GenericRepository
         }
         public async Task<T> GetById(object id)
         {
-            return _entities.Find(id);
+            return  _entities.Find(id);
         }
         public void Insert(T obj)
         {
             _entities.Add(obj);
         }
+        public virtual async Task<T> InsertAsync(T TEntity)
+        {
+            _context.Set<T>().Add(TEntity);
+            await _context.SaveChangesAsync();
+            return TEntity;
+
+        }
+
         public void Update(T obj)
         {
             _entities.Attach(obj);
             _context.Entry(obj).State = EntityState.Modified;
         }
-        public Task Delete(object id)
+
+        public virtual async Task UpdateAsync(T obj)
         {
-            T existing =  _entities.Find(id);
-             _entities.Remove(existing);
-            return Task.CompletedTask;
+            _entities.Attach(obj);
+            _context.Entry(obj).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
         }
 
-        public void Save()
+
+        public async Task<int> Delete(object id)
         {
-            _context.SaveChanges();
+            T existing = _entities.Find(id);
+            _entities.Remove(existing);
+            return await _context.SaveChangesAsync();
         }
+
+        public void Save() => _context.SaveChanges();
+
+        public virtual async Task<int> SaveAsync() => await _context.SaveChangesAsync();
     }
 }
 

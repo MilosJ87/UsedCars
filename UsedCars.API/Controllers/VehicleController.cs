@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.CompilerServices;
 using UsedCars.Decorators;
 using UsedCars.Models;
 using UsedCars.Services;
@@ -42,7 +43,7 @@ namespace UsedCars.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateVehicleAsync([FromBody] VehicleDto vehicleDto)
         {
-            var vehicleToCreate = _vehicleService.CreateVehicleAsync(vehicleDto);
+            var vehicleToCreate = await _vehicleService.CreateVehicleAsync(vehicleDto);
             return CreatedAtRoute("GetVehicle",
                 new {vehicleId = vehicleToCreate.Id },
                 vehicleToCreate);
@@ -72,10 +73,10 @@ namespace UsedCars.Controllers
         [HttpPatch("{vehicleId}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        public async Task<ActionResult> PartiallyUpdateVehicleAsync(Guid vehicleId, Guid additionalEquipmentId,
+        public async Task<ActionResult> PartiallyUpdateVehicleAsync(Guid vehicleId,
             [FromBody] JsonPatchDocument<VehicleDto> patchDocument)
         {
-            _vehicleService.PatchVehicle(vehicleId,patchDocument);
+           await _vehicleService.PatchVehicle(vehicleId,patchDocument);
 
 
             return NoContent();
@@ -84,8 +85,8 @@ namespace UsedCars.Controllers
         [HttpDelete("{vehicleId}")]
         public async Task<ActionResult> DeleteVehicleAsync(Guid vehicleId)
         {
-            var vehicleFromRepo =  _vehicleService.DeleteVehicle(vehicleId);
-
+            var vehicleFromRepo = _vehicleService.DeleteVehicle(vehicleId);
+            
             return NoContent();
 
         }

@@ -27,16 +27,16 @@ namespace UsedCars.Controllers
         }
 
         [HttpGet("{modelId}", Name = "GetModel")]
-        public IActionResult GetModel(Guid modelId)
+        public async Task<IActionResult> GetModel(Guid modelId)
         {
-           var modelToReturn = _modelService.GetModel(modelId);
+           var modelToReturn = await _modelService.GetModel(modelId);
             return Ok(modelToReturn);
         }
 
         [HttpPost]
         public async Task<ActionResult<MakeDto>> CreateModel([FromBody] MakeDto modelCreate)
         {
-            var modelToReturn = _modelService.CreateModel(modelCreate);
+            var modelToReturn = await _modelService.CreateModel(modelCreate);
 
             return Ok(modelToReturn);
         }

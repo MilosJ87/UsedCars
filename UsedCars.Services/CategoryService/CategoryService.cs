@@ -40,8 +40,8 @@ namespace UsedCars.Services
         public async Task<CategoryDto> CreateCategory(CategoryDto categoryDto)
         {
             var categoryToCreate = _mapper.Map<Category>(categoryDto);
-            _categoryRepo.Insert(categoryToCreate);
-            _categoryRepo.Save();
+            await _categoryRepo.InsertAsync(categoryToCreate);
+            await _categoryRepo.SaveAsync();
             var categoryToReturn = _mapper.Map<CategoryDto>(categoryToCreate);
             return categoryToReturn;
 
@@ -49,9 +49,9 @@ namespace UsedCars.Services
 
         public async Task DeleteCategory(Guid categoryId)
         {
-            var categoryToDelete = _categoryRepo.GetById(categoryId);
-            var deleteCategory = _categoryRepo.Delete(categoryToDelete);
-            _categoryRepo.Save();
+            var categoryToDelete = await _categoryRepo.GetById(categoryId);
+            var deleteCategory = await _categoryRepo.Delete(categoryToDelete);
+            await _categoryRepo.SaveAsync();
 
         }
     }

@@ -7,7 +7,7 @@ namespace UsedCars.Entities
     {
         [Key]
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public ICollection<VehicleEquipment> VehicleEquipments { get; set; }      
+        public string? Name { get; set; }
+        public ICollection<VehicleEquipment>? VehicleEquipments { get; set; }      
     }
 }

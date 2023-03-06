@@ -1,0 +1,16 @@
+`
+WF:\Projects\UsedCars\UsedCars.Repository\AdditionalEquipment\AdditionalEquipmentRepo.csutf-8a
+XF:\Projects\UsedCars\UsedCars.Repository\AdditionalEquipment\IAdditionalEquipmentRepo.csutf-8J
+AF:\Projects\UsedCars\UsedCars.Repository\Category\CategoryRepo.csutf-8K
+BF:\Projects\UsedCars\UsedCars.Repository\Category\ICategoryRepo.csutf-8X
+OF:\Projects\UsedCars\UsedCars.Repository\GenericRepository\GenericRepository.csutf-8Y
+PF:\Projects\UsedCars\UsedCars.Repository\GenericRepository\IGenericRepository.csutf-8C
+:F:\Projects\UsedCars\UsedCars.Repository\Make\IMakeRepo.csutf-8B
+9F:\Projects\UsedCars\UsedCars.Repository\Make\MakeRepo.csutf-8E
+<F:\Projects\UsedCars\UsedCars.Repository\Model\IModelRepo.csutf-8D
+;F:\Projects\UsedCars\UsedCars.Repository\Model\ModelRepo.csutf-8I
+@F:\Projects\UsedCars\UsedCars.Repository\Vehicle\IVehicleRepo.csutf-8H
+?F:\Projects\UsedCars\UsedCars.Repository\Vehicle\VehicleRepo.csutf-8j
+_F:\Projects\UsedCars\UsedCars.Repository\obj\Debug\net6.0\UsedCars.Repository.GlobalUsings.g.csutf-8s
+hF:\Projects\UsedCars\UsedCars.Repository\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.csutf-8h
+]F:\Projects\UsedCars\UsedCars.Repository\obj\Debug\net6.0\UsedCars.Repository.AssemblyInfo.csutf-8

@@ -47,7 +47,7 @@ namespace UsedCars.Controllers
         [HttpDelete("{makeId}")]
         public ActionResult DeleteMake(Guid makeId)
         {
-            var makeFromRepo = _makeService.DeleteMake(makeId);
+            _makeService.DeleteMake(makeId);
            
            return NoContent();
         }

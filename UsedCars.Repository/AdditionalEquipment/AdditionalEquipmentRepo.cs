@@ -16,9 +16,9 @@ namespace UsedCars.Repository
         {
             return _context.AdditionalEquipments.Any(x => x.Id == id);
         }
-        public ICollection<Entities.AdditionalEquipment> GetEquipmentByVehicle(Guid vehicleId)
+        public ICollection<AdditionalEquipment> GetEquipmentByVehicle(Guid vehicleId)
         {
-            return _context.VehicleEquipments.Where(p => p.Vehicle.Id == vehicleId).Select(o => o.AdditionalEquipment).ToList();
+            return  _context.VehicleEquipments.Where(p => p.Vehicle.Id == vehicleId).Select(o => o.AdditionalEquipment).ToList();
         }
         public void CreateVehicleForEquipment(Guid additionalEquipmentId, Vehicle vehicle)
         {
@@ -39,14 +39,8 @@ namespace UsedCars.Repository
         }
         public ICollection<Vehicle> GetVehicleByEquipment(Guid additionalEquipmentId)
         {
-            return _context.VehicleEquipments.Where(p => p.AdditionalEquipment.Id == additionalEquipmentId).Select(c => c.Vehicle).ToList();
+            return  _context.VehicleEquipments.Where(p => p.AdditionalEquipment.Id == additionalEquipmentId).Select(c => c.Vehicle).ToList();
         }
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-
-            }
-        }
+        
     }
 }
