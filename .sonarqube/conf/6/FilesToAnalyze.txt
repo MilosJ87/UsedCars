@@ -1,4 +1,6 @@
 ﻿F:\Projects\UsedCars\UsedCars.Tests\Controllers\VehicleControllerTests.cs
+F:\Projects\UsedCars\UsedCars.Tests\Generic Repository\GenericRepositoryTests.cs
+F:\Projects\UsedCars\UsedCars.Tests\MakeRepoTests.cs
 F:\Projects\UsedCars\UsedCars.Tests\UnitTest1.cs
 F:\Projects\UsedCars\UsedCars.Tests\Usings.cs
 C:\Users\Milos\.nuget\packages\microsoft.net.test.sdk\17.3.2\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.Program.cs

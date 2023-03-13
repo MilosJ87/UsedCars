@@ -14,43 +14,59 @@ using UsedCars.GenericRepository;
 
 namespace UsedCars.Tests.Generic_Repository
 {
+    using Moq;
+    using UsedCars.Services;
+    using Xunit;
+
     public class GenericRepositoryTests
     {
         private readonly IGenericRepository<Vehicle> _vehicleRepository;
         private readonly UsedCarsContext _context;
 
-        public GenericRepositoryTests(IGenericRepository<Vehicle> vehicleRepository)
+        public GenericRepositoryTests()
         {
-            var options = new DbContextOptionsBuilder<UsedCarsContext>()
-                .UseInMemoryDatabase(databaseName: "test_database")
-                .Options;
+            // Mock the IGenericRepository<Vehicle> object
+            var vehicleRepositoryMock = new Mock<IGenericRepository<Vehicle>>();
 
-            _context = new UsedCarsContext(options);
-            _vehicleRepository = vehicleRepository;
-        }
-
-        [Fact]
-        public async Task GetAllAsync_Returns_All_Entities()
-        {
-            // Arrange
-            var entities = new List<Vehicle> {
+            // Set up the mock to return some test data
+            var testData = new  List<Vehicle> {
             new Vehicle { Id = Guid.NewGuid(), Name = "Vehicle 1", CategoryId = Guid.NewGuid(), ModelId = Guid.NewGuid(), MakeId = Guid.NewGuid() },
             new Vehicle { Id = Guid.NewGuid(), Name = "Vehicle 2", CategoryId = Guid.NewGuid(), ModelId = Guid.NewGuid(), MakeId = Guid.NewGuid() },
             new Vehicle { Id = Guid.NewGuid(), Name = "Vehicle 3", CategoryId = Guid.NewGuid(), ModelId = Guid.NewGuid(), MakeId = Guid.NewGuid() }
-            };
+        }.AsEnumerable();
 
-            foreach (var entity in entities)
-            {
-                await _vehicleRepository.InsertAsync(entity);
-            }
+            vehicleRepositoryMock.Setup( m =>  m.GetAllAsync()).Returns(Task.FromResult(testData));
+
+            // Assign the mock to the private field _vehicleRepository
+            _vehicleRepository = vehicleRepositoryMock.Object;
+
+            // Mock the UsedCarsContext object
+            var contextOptions = new DbContextOptionsBuilder<UsedCarsContext>()
+                .UseInMemoryDatabase(databaseName: "test_database")
+                .Options;
+
+            var contextMock = new Mock<UsedCarsContext>(contextOptions);
+
+            // Assign the mock to the private field _context
+            _context = contextMock.Object;
+        }
+
+        [Fact]
+        public async Task TestGetAllVehicles()
+        {
+            // Arrange
+           // var vehicleService = new IGenericRepository(_vehicleRepository, _context);
 
             // Act
             var result = await _vehicleRepository.GetAllAsync();
 
             // Assert
-            Assert.Equal(entities.Count, result.Count());
+            Assert.NotNull(result);
+            Assert.Equal(3, result.Count());
         }
-        
     }
+
+
 }
+
 

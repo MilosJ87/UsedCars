@@ -59,6 +59,15 @@ namespace UsedCars.GenericRepository
         public void Save() => _context.SaveChanges();
 
         public virtual async Task<int> SaveAsync() => await _context.SaveChangesAsync();
+
+        public bool Exsits(object id)
+        {
+            T entity = _entities.Find(id);
+
+            return entity != null;
+
+
+        }
     }
 }
 

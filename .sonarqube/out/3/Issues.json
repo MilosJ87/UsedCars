@@ -18,27 +18,6 @@
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///F:/Projects/UsedCars/UsedCars.Services/MakeService/MakeService.cs",
-                "region": {
-                  "startLine": 49,
-                  "startColumn": 27,
-                  "endLine": 49,
-                  "endColumn": 37
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS1998",
-          "level": "warning",
-          "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
-          "locations": [
-            {
-              "resultFile": {
                 "uri": "file:///F:/Projects/UsedCars/UsedCars.Services/AdditionalEquipment/AdditionalEquipmentService.cs",
                 "region": {
                   "startLine": 50,

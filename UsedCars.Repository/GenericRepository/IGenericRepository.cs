@@ -3,6 +3,7 @@
     public interface IGenericRepository<T> where T : class
     {
         Task<int> Delete(object id);
+        bool Exsits(object id);
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetById(object id);
         Task<T> InsertAsync(T TEntity);

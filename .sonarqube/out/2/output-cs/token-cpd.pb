@@ -202,7 +202,8 @@ HF:\Projects\UsedCars\UsedCars.Models\Models\UpdateAdditionalEquipment.cs
 ;& '
 }( )
 } 
-} ó	
+} œ
+
 9F:\Projects\UsedCars\UsedCars.Models\Models\VehicleDto.cs
 	namespace 	
 UsedCars
@@ -262,19 +263,21 @@ CategoryId		 
 ;  !
 set" %
 ;% &
-}' (
-List 
-< "
-AdditionalEquipmentDto #
-># $
-?$ %&
-AdditionalEquipmentDtoList& @
-{A B
-getC F
-;F G
-setH K
-;K L
-}M N
+}' (
+public 
+virtual 
+List 
+< "
+AdditionalEquipmentDto 1
+>1 2
+?2 3&
+AdditionalEquipmentDtoList4 N
+{O P
+getQ T
+;T U
+setV Y
+;Y Z
+}[ \
 } 
 } Ô
 BF:\Projects\UsedCars\UsedCars.Models\Models\VehicleEquipmentDto.cs

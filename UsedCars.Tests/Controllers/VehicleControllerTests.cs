@@ -18,10 +18,9 @@ namespace UsedCars.Tests.Controllers
             _vehicleService = A.Fake<IVehicleService>();
 
         }
-        
-        
+               
         [Fact]
-        public async Task VehicleController_GetVehicle_ReturnOk()
+       public async Task VehicleController_GetVehicle_ReturnOk()
         {
            // var vehicleService = new Mock<IVehicleService>();
 
@@ -30,8 +29,7 @@ namespace UsedCars.Tests.Controllers
             var result = await controller.GetVehicleAsync(Guid.Parse("3FA85F64-5717-4562-B3FC-2B963F66AFA6"));
 
             Assert.NotNull(result);
-
-           
+                     
         }
 
     }

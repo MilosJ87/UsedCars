@@ -56,7 +56,7 @@ HF:\Projects\UsedCars\UsedCars.Models\Models\UpdateAdditionalEquipment.cs
 
  
 
-& @h
+4 Nh
 BF:\Projects\UsedCars\UsedCars.Models\Models\VehicleEquipmentDto.cs
 
  $

@@ -1,4 +1,4 @@
-ç 
+Ä 
 WF:\Projects\UsedCars\UsedCars.Repository\AdditionalEquipment\AdditionalEquipmentRepo.cs
 	namespace 	
 UsedCars
@@ -85,48 +85,47 @@ Repository 
 } 	
 public 
 ICollection 
-< 
-Entities #
-.# $
-AdditionalEquipment$ 7
->7 8!
-GetEquipmentByVehicle9 N
-(N O
-GuidO S
-	vehicleIdT ]
-)] ^
+< 
+AdditionalEquipment .
+>. /!
+GetEquipmentByVehicle0 E
+(E F
+GuidF J
+	vehicleIdK T
+)T U
 { 	
 return 
-_context 
-. 
-VehicleEquipments -
-.- .
-Where. 3
-(3 4
-p4 5
-=>6 8
-p9 :
-.: ;
-Vehicle; B
-.B C
-IdC E
-==F H
-	vehicleIdI R
-)R S
-.S T
-SelectT Z
-(Z [
-o[ \
-=>] _
-o` a
-.a b
-AdditionalEquipmentb u
-)u v
-.v w
-ToListw }
-(} ~
-)~ 
-;	 €
+_context 
+. 
+VehicleEquipments .
+.. /
+Where/ 4
+(4 5
+p5 6
+=>7 9
+p: ;
+.; <
+Vehicle< C
+.C D
+IdD F
+==G I
+	vehicleIdJ S
+)S T
+.T U
+SelectU [
+([ \
+o\ ]
+=>^ `
+oa b
+.b c
+AdditionalEquipmentc v
+)v w
+.w x
+ToListx ~
+(~ 
+)	 €
+;
+€ 
 } 	
 public 
 void %
@@ -782,7 +781,8 @@ OF:\Projects\UsedCars\UsedCars.Repository\GenericRepository\GenericRepository.cs
 )==V W
 ;==W X
 }>> 
-}?? ƒ
+}?? Ì
+
 PF:\Projects\UsedCars\UsedCars.Repository\GenericRepository\IGenericRepository.cs
 	namespace 	
 UsedCars
@@ -833,62 +833,47 @@ PF:\Projects\UsedCars\UsedCars.Repository\GenericRepository\IGenericRepository.c
 id !
 )! "
 ;" #
-void 
-Insert 
-( 
-T 
-obj 
-) 
-; 
+Task 
+< 
+T 
+> 
+InsertAsync 
+( 
+T 
+TEntity %
+)% &
+;& '
 Task		 
-<		 
-T		 
->		 
-InsertAsync		 
+<		 
+int		 
+>		 
+	SaveAsync		 
 (		 
-T		 
-TEntity		 %
-)		% &
-;		& '
-void
+)		 
+;		 
+Task
 
- 
-Save
+ 
+UpdateAsync
 
- 
+ 
 (
 
- 
+ 
+T
+
+ 
+obj
+
+ 
 )
 
- 
+ 
 ;
 
- 
-Task 
-< 
-int 
-> 
-	SaveAsync 
-( 
-) 
-; 
-void 
-Update 
-( 
-T 
-obj 
-) 
-; 
-Task 
-UpdateAsync 
-( 
-T 
-obj 
-) 
-;  
-} 
-} Ù
+  
+} 
+} Ù
 :F:\Projects\UsedCars\UsedCars.Repository\Make\IMakeRepo.cs
 	namespace 	
 UsedCars
@@ -1202,7 +1187,7 @@ IModelRepo@ J
 } 
 } 	
 } 
-}   ï
+}   ›
 @F:\Projects\UsedCars\UsedCars.Repository\Vehicle\IVehicleRepo.cs
 	namespace 	
 UsedCars
@@ -1223,22 +1208,15 @@ Repository 
 Vehicle@ G
 >G H
 { 
-void 
-Dispose 
-( 
-) 
-; 
-bool 
-VehicleExists 
-( 
-Guid 
-	vehicleId  )
-)) *
-;* +
-}		 
-}
-
- Í
+bool 
+VehicleExists 
+( 
+Guid 
+	vehicleId  )
+)) *
+;* +
+} 
+}		 Ã
 ?F:\Projects\UsedCars\UsedCars.Repository\Vehicle\VehicleRepo.cs
 	namespace 	
 UsedCars
@@ -1280,16 +1258,10 @@ Repository 
 A B
 ,
 
-B C
-IDisposable
-
-D O
-,
-
-O P
+B C
 IVehicleRepo
 
-Q ]
+D P
 { 
 public 
 VehicleRepo 
@@ -1348,41 +1320,6 @@ Repository 
 	vehicleId886 ?
 )88? @
 ;88@ A
-}99 	
-public;; 
-void;; 
-Dispose;; 
-(;; 
-);; 
-{<< 	
-Dispose== 
-(== 
-true== 
-)== 
-;== 
-GC>> 
-.>> 
-SuppressFinalize>> 
-(>>  
-this>>  $
-)>>$ %
-;>>% &
-}?? 	
-	protected@@ 
-virtual@@ 
-void@@ 
-Dispose@@ &
-(@@& '
-bool@@' +
-	disposing@@, 5
-)@@5 6
-{AA 	
-ifBB 
-(BB 
-	disposingBB 
-)BB 
-{CC 
-}EE 
-}FF 	
-}GG 
-}HH 
+}99 	
+};; 
+}<< 

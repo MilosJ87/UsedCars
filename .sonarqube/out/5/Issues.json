@@ -96,27 +96,6 @@
           }
         },
         {
-          "ruleId": "CS8604",
-          "level": "warning",
-          "message": "Possible null reference argument for parameter 'arrayToDeserialize' in 'T Serialization.FromByteArray<T>(byte[] arrayToDeserialize)'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///F:/Projects/UsedCars/UsedCars.API/Extensions/DistributingCachingExtensions.cs",
-                "region": {
-                  "startLine": 20,
-                  "startColumn": 20,
-                  "endLine": 20,
-                  "endColumn": 26
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
           "ruleId": "CS1998",
           "level": "warning",
           "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
@@ -129,6 +108,27 @@
                   "startColumn": 41,
                   "endLine": 86,
                   "endColumn": 59
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CS8604",
+          "level": "warning",
+          "message": "Possible null reference argument for parameter 'arrayToDeserialize' in 'T Serialization.FromByteArray<T>(byte[] arrayToDeserialize)'.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///F:/Projects/UsedCars/UsedCars.API/Extensions/DistributingCachingExtensions.cs",
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 20,
+                  "endLine": 20,
+                  "endColumn": 26
                 }
               }
             }
@@ -203,16 +203,16 @@
         {
           "ruleId": "S1481",
           "level": "warning",
-          "message": "Remove the unused local variable 'modelToDelete'.",
+          "message": "Remove the unused local variable 'vehicleFromRepo'.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///F:/Projects/UsedCars/UsedCars.API/Controllers/ModelController.cs",
+                "uri": "file:///F:/Projects/UsedCars/UsedCars.API/Controllers/VehicleController.cs",
                 "region": {
-                  "startLine": 49,
+                  "startLine": 88,
                   "startColumn": 17,
-                  "endLine": 49,
-                  "endColumn": 30
+                  "endLine": 88,
+                  "endColumn": 32
                 }
               }
             }
@@ -224,16 +224,16 @@
         {
           "ruleId": "S1481",
           "level": "warning",
-          "message": "Remove the unused local variable 'vehicleFromRepo'.",
+          "message": "Remove the unused local variable 'modelToDelete'.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///F:/Projects/UsedCars/UsedCars.API/Controllers/VehicleController.cs",
+                "uri": "file:///F:/Projects/UsedCars/UsedCars.API/Controllers/ModelController.cs",
                 "region": {
-                  "startLine": 88,
+                  "startLine": 49,
                   "startColumn": 17,
-                  "endLine": 88,
-                  "endColumn": 32
+                  "endLine": 49,
+                  "endColumn": 30
                 }
               }
             }

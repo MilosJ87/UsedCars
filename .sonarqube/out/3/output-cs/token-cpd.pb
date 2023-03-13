@@ -825,7 +825,7 @@ DeleteMake 
 
 - .
 } 
-} ª"
+} Â"
 AF:\Projects\UsedCars\UsedCars.Services\MakeService\MakeService.cs
 	namespace 	
 UsedCars
@@ -1059,13 +1059,14 @@ DeleteMake11 $
 (44. /
 makeToDelete44/ ;
 )44; <
-;44< =
-	_makeRepo55 
-.55 
-Save55 
-(55 
-)55 
-;55 
+;44< =
+await55 
+	_makeRepo55 
+.55 
+	SaveAsync55 %
+(55% &
+)55& '
+;55' (
 }77 	
 }88 
 }99 ¸
@@ -1501,7 +1502,7 @@ VehicleDto' 1
 )9 :
 ;: ;
 } 
-} ÷R
+} ÑT
 HF:\Projects\UsedCars\UsedCars.Services\Vehicle.Service\VehicleService.cs
 	namespace 	
 UsedCars
@@ -1796,20 +1797,22 @@ VehicleDto--4 >
 vehicle99" )
 .99) *
 Id99* ,
-;99, -
-_vehicleRepo;; 
-.;; 
-Insert;; #
-(;;# $
-vehicleToAdd;;$ 0
-);;0 1
-;;;1 2
-_vehicleRepo== 
-.== 
-Save== !
-(==! "
-)==" #
-;==# $
+;99, -
+await;; 
+_vehicleRepo;; "
+.;;" #
+InsertAsync;;# .
+(;;. /
+vehicleToAdd;;/ ;
+);;; <
+;;;< =
+await== 
+_vehicleRepo== "
+.==" #
+	SaveAsync==# ,
+(==, -
+)==- .
+;==. /
 var?? 
 vehicleToReturn?? #
 =??$ %
@@ -1836,20 +1839,22 @@ VehicleDto??2 <
 ,DD  
 vehicleFromRepoDD! 0
 )DD0 1
-;DD1 2
-_vehicleRepoFF 
-.FF 
-UpdateFF 
-(FF  
-vehicleFromRepoFF  /
-)FF/ 0
-;FF0 1
-_vehicleRepoHH 
-.HH 
-SaveHH 
-(HH 
-)HH 
-;HH  
+;DD1 2
+awaitFF 
+_vehicleRepoFF 
+.FF 
+UpdateAsyncFF *
+(FF* +
+vehicleFromRepoFF+ :
+)FF: ;
+;FF; <
+awaitHH 
+_vehicleRepoHH 
+.HH 
+	SaveAsyncHH (
+(HH( )
+)HH) *
+;HH* +
 varJJ 
 vehiclToReturnJJ 
 =JJ  
@@ -1958,20 +1963,22 @@ vehicleDto``8 B
 Idaa 
 =aa  !
 	vehicleIdaa" +
-;aa+ ,
-_vehicleRepocc 
-.cc 
-Insertcc #
-(cc# $
-vehicleToAddcc$ 0
-)cc0 1
-;cc1 2
-_vehicleRepoee 
-.ee 
-Saveee "
-(ee" #
-)ee# $
-;ee$ %
+;aa+ ,
+awaitcc 
+_vehicleRepocc !
+.cc! "
+InsertAsynccc" -
+(cc- .
+vehicleToAddcc. :
+)cc: ;
+;cc; <
+awaitee 
+_vehicleRepoee "
+.ee" #
+	SaveAsyncee# ,
+(ee, -
+)ee- .
+;ee. /
 vargg 
 vehicleToReturngg #
 =gg$ %
@@ -2019,20 +2026,22 @@ VehicleDtoll- 7
 ,rr& '
 vehicleFromReporr( 7
 )rr7 8
-;rr8 9
-_vehicleRepott 
-.tt 
-Updatett 
-(tt  
-vehicleFromRepott  /
-)tt/ 0
-;tt0 1
-_vehicleRepovv 
-.vv 
-Savevv 
-(vv 
-)vv  
-;vv  !
+;rr8 9
+awaittt 
+_vehicleRepott 
+.tt 
+UpdateAsynctt *
+(tt* +
+vehicleFromRepott+ :
+)tt: ;
+;tt; <
+awaitvv 
+_vehicleRepovv 
+.vv 
+	SaveAsyncvv (
+(vv( )
+)vv) *
+;vv* +
 varxx 
 updatedVehiclexx 
 =xx  
@@ -2108,19 +2117,21 @@ VehicleDtoyy0 :
 )
 ‚‚4 5
 ;
-‚‚5 6
+‚‚5 6
+await
+ƒƒ 
 _vehicleRepo
-ƒƒ 
+ƒƒ 
 .
-ƒƒ 
-Save
-ƒƒ 
+ƒƒ 
+	SaveAsync
+ƒƒ '
 (
-ƒƒ 
+ƒƒ' (
 )
-ƒƒ 
+ƒƒ( )
 ;
-ƒƒ  
+ƒƒ) *
 }
 „„ 	
 }

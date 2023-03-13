@@ -10,10 +10,10 @@ WF:\Projects\UsedCars\UsedCars.Repository\AdditionalEquipment\AdditionalEquipmen
 3 5B D
 5 6: ;
 
-9 N
-T ]I R
-4 59 :
-[ \` a
+0 E
+K TJ S
+5 6: ;
+\ ]a b
 
  -
 3 HZ o
@@ -105,11 +105,13 @@ OF:\Projects\UsedCars\UsedCars.Repository\GenericRepository\GenericRepository.cs
 
 ;; 
 
-==' 0î
+==' 0ž
 PF:\Projects\UsedCars\UsedCars.Repository\GenericRepository\IGenericRepository.cs
 
- 'Z
-( )1 2   		 		   
+ 'F
+( )1 2    
+
+ 
 
  
 
@@ -121,27 +123,19 @@ PF:\Projects\UsedCars\UsedCars.Repository\GenericRepository\IGenericRepository.c
 
  !
 
- 
+ 
 
- 
+ %
 
-		 
-
-		 %
+		 
 
 
 
- 
+ 
 
- 
-
- 
-
- 
-
- 
-
- l
+
+
+ l
 :F:\Projects\UsedCars\UsedCars.Repository\Make\IMakeRepo.cs
 
  
@@ -191,16 +185,14 @@ PF:\Projects\UsedCars\UsedCars.Repository\GenericRepository\IGenericRepository.c
 
  
  & 
-, 5 r
+, 5 f
 @F:\Projects\UsedCars\UsedCars.Repository\Vehicle\IVehicleRepo.cs
 
  !
 
- 
+ 
 
- 
-
-  )ç
+  )¯
 ?F:\Projects\UsedCars\UsedCars.Repository\Vehicle\VehicleRepo.cs
 
 
@@ -210,8 +202,4 @@ PF:\Projects\UsedCars\UsedCars.Repository\GenericRepository\IGenericRepository.c
 
 11 !(
 11' 033 557 @886 ?
-88) *88. /
-
-;; 
-@@ &== 
-@@, 5BB 
+88) *88. /

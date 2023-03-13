@@ -11,48 +11,7 @@
         "language": "en-US"
       },
       "results": [
-        {
-          "ruleId": "S1144",
-          "level": "warning",
-          "message": "Remove the unused private property 'AdditionalEquipmentDtoList'.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///F:/Projects/UsedCars/UsedCars.Models/Models/VehicleDto.cs",
-                "region": {
-                  "startLine": 15,
-                  "startColumn": 9,
-                  "endLine": 15,
-                  "endColumn": 79
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        }
-      ],
-      "rules": {
-        "S1144": {
-          "id": "S1144",
-          "shortDescription": "Unused private types or members should be removed",
-          "fullDescription": "private or internal types or private members that are never executed or referenced are dead code: unnecessary, inoperative code that should be removed. Cleaning out dead code decreases the size of the maintained codebase, making it easier to understand the program and preventing bugs from being introduced.",
-          "defaultLevel": "note",
-          "helpUri": "https://rules.sonarsource.com/csharp/RSPEC-1144",
-          "properties": {
-            "category": "Major Code Smell",
-            "isEnabledByDefault": true,
-            "tags": [
-              "C#",
-              "MainSourceScope",
-              "TestSourceScope",
-              "SonarWay",
-              "Unnecessary"
-            ]
-          }
-        }
-      }
+      ]
     }
   ]
 }
