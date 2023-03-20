@@ -14,6 +14,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
     <PackageReference Include="Moq" Version="4.18.4" />
+    <PackageReference Include="OpenCover" Version="4.7.1221" />
+    <PackageReference Include="ReportGenerator" Version="5.1.19" />
+    <PackageReference Include="ReportGenerator.Core" Version="5.1.19" />
     <PackageReference Include="xunit" Version="2.4.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -28,5 +31,9 @@
   <ItemGroup>
     <ProjectReference Include="..\UsedCars.API\UsedCars.API.csproj" />
   </ItemGroup>
+
+ <Target Name="Test" AfterTargets="Build">
+  <Exec Command="dotnet test UsedCars.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --logger:&quot;console;verbosity=detailed&quot; --no-build" />
+</Target>
 
 </Project>

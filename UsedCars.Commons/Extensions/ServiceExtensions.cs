@@ -14,7 +14,8 @@ namespace UsedCars.Common.Extensions
     {
        public static IServiceCollection RegisterServices(this IServiceCollection services)
         {
-            services.AddScoped<IAdditionalService, AdditionalEquipmentRepo>();
+            services.AddScoped<IAdditionalEquipmentService, AdditionalEquipmentService>();
+            services.AddScoped<IAdditionalEquipmentRepo, AdditionalEquipmentRepo>();    
             services.AddScoped<IModelRepo, ModelRepo>();
             services.AddScoped<IMakeRepo, MakeRepo>();
             services.AddScoped<IVehicleRepo, VehicleRepo>();

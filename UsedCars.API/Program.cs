@@ -7,12 +7,15 @@ using UsedCars.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using UsedCars.Extensions;
 using UsedCars.Common;
+using UsedCars.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddHttpClient();
+
 builder.Services.AddControllers().AddNewtonsoftJson(setupAction =>
 {
     setupAction.SerializerSettings.ContractResolver =
@@ -36,10 +39,20 @@ builder.Services.AddAuthentication("Bearer")
                     opt.Audience = "UsedCars";
                 });
 
+builder.Services.AddHttpClient("ArticleClient", (config) =>
+{
+    config.BaseAddress = new Uri("https://localhost:7126/api");
+});
+builder.Services.AddHttpClient<AdditionalEquip>((config) =>
+{
+    config.BaseAddress = new Uri("https://localhost:7126/api");
+});
+
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddAutoMapper(typeof(VehicleProfile));
 builder.Services.RegisterServices();
+builder.Services.AddScoped<IAdditionalEquip, AdditionalEquip>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

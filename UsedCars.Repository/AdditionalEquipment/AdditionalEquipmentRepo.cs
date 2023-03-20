@@ -7,7 +7,7 @@ using UsedCars.GenericRepository;
 
 namespace UsedCars.Repository
 {
-    public class AdditionalEquipmentRepo : GenericRepository<Entities.AdditionalEquipment>, IAdditionalService
+    public class AdditionalEquipmentRepo : GenericRepository<Entities.AdditionalEquipment>, IAdditionalEquipmentRepo
     {
         public AdditionalEquipmentRepo(UsedCarsContext context) : base(context)
         {
@@ -18,7 +18,7 @@ namespace UsedCars.Repository
         }
         public ICollection<AdditionalEquipment> GetEquipmentByVehicle(Guid vehicleId)
         {
-            return  _context.VehicleEquipments.Where(p => p.Vehicle.Id == vehicleId).Select(o => o.AdditionalEquipment).ToList();
+            return _context.VehicleEquipments.Where(p => p.Vehicle.Id == vehicleId).Select(o => o.AdditionalEquipment).ToList();
         }
         public void CreateVehicleForEquipment(Guid additionalEquipmentId, Vehicle vehicle)
         {
@@ -39,8 +39,8 @@ namespace UsedCars.Repository
         }
         public ICollection<Vehicle> GetVehicleByEquipment(Guid additionalEquipmentId)
         {
-            return  _context.VehicleEquipments.Where(p => p.AdditionalEquipment.Id == additionalEquipmentId).Select(c => c.Vehicle).ToList();
+            return _context.VehicleEquipments.Where(p => p.AdditionalEquipment.Id == additionalEquipmentId).Select(c => c.Vehicle).ToList();
         }
-        
+
     }
 }

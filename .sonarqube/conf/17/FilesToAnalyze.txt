@@ -1,0 +1,11 @@
+﻿F:\Projects\UsedCars\UsedCars.Services\AdditionalEquipment\AdditionalEquipmentService.cs
+F:\Projects\UsedCars\UsedCars.Services\AdditionalEquipment\IAdditionalEquipmentService.cs
+F:\Projects\UsedCars\UsedCars.Services\CategoryService\CategoryService.cs
+F:\Projects\UsedCars\UsedCars.Services\CategoryService\ICategoryService.cs
+F:\Projects\UsedCars\UsedCars.Services\MakeService\IMakeService.cs
+F:\Projects\UsedCars\UsedCars.Services\MakeService\MakeService.cs
+F:\Projects\UsedCars\UsedCars.Services\ModelService\IModelService.cs
+F:\Projects\UsedCars\UsedCars.Services\ModelService\ModelService.cs
+F:\Projects\UsedCars\UsedCars.Services\Vehicle.Service\IVehicleService.cs
+F:\Projects\UsedCars\UsedCars.Services\Vehicle.Service\VehicleService.cs
+F:\Projects\UsedCars\UsedCars.Services\Properties\launchSettings.json

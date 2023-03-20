@@ -12,11 +12,11 @@ namespace UsedCars.Services
 {
     public class AdditionalEquipmentService : IAdditionalEquipmentService
     {
-        private readonly IAdditionalService _additionalEquipmentRepo;
+        private readonly IAdditionalEquipmentRepo _additionalEquipmentRepo;
 
         private readonly IMapper _mapper;
 
-        public AdditionalEquipmentService(IAdditionalService additionalEquipmentRepo, IMapper mapper)
+        public AdditionalEquipmentService(IAdditionalEquipmentRepo additionalEquipmentRepo, IMapper mapper)
         {
             _additionalEquipmentRepo = additionalEquipmentRepo ?? throw new ArgumentNullException(nameof(additionalEquipmentRepo));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
@@ -46,6 +46,8 @@ namespace UsedCars.Services
             return equipmentToReturn;
 
         }
+
+     
        
         public async Task<AdditionalEquipmentDto> GetVehicleByEquipment(Guid additionalEquipmentId)
         {

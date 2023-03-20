@@ -1,0 +1,14 @@
+a
+XF:\Projects\UsedCars\UsedCars.Services\AdditionalEquipment\AdditionalEquipmentService.csutf-8b
+YF:\Projects\UsedCars\UsedCars.Services\AdditionalEquipment\IAdditionalEquipmentService.csutf-8R
+IF:\Projects\UsedCars\UsedCars.Services\CategoryService\CategoryService.csutf-8S
+JF:\Projects\UsedCars\UsedCars.Services\CategoryService\ICategoryService.csutf-8K
+BF:\Projects\UsedCars\UsedCars.Services\MakeService\IMakeService.csutf-8J
+AF:\Projects\UsedCars\UsedCars.Services\MakeService\MakeService.csutf-8M
+DF:\Projects\UsedCars\UsedCars.Services\ModelService\IModelService.csutf-8L
+CF:\Projects\UsedCars\UsedCars.Services\ModelService\ModelService.csutf-8R
+IF:\Projects\UsedCars\UsedCars.Services\Vehicle.Service\IVehicleService.csutf-8Q
+HF:\Projects\UsedCars\UsedCars.Services\Vehicle.Service\VehicleService.csutf-8f
+[F:\Projects\UsedCars\UsedCars.Services\obj\Debug\net6.0\UsedCars.Services.GlobalUsings.g.csutf-8q
+fF:\Projects\UsedCars\UsedCars.Services\obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.csutf-8d
+YF:\Projects\UsedCars\UsedCars.Services\obj\Debug\net6.0\UsedCars.Services.AssemblyInfo.csutf-8

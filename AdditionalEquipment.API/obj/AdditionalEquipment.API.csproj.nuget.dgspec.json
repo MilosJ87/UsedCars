@@ -1,0 +1,429 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\Projects\\UsedCars\\AdditionalEquipment.API\\AdditionalEquipment.API.csproj": {}
+  },
+  "projects": {
+    "F:\\Projects\\UsedCars\\AdditionalEquipment.API\\AdditionalEquipment.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Projects\\UsedCars\\AdditionalEquipment.API\\AdditionalEquipment.API.csproj",
+        "projectName": "AdditionalEquipment.API",
+        "projectPath": "F:\\Projects\\UsedCars\\AdditionalEquipment.API\\AdditionalEquipment.API.csproj",
+        "packagesPath": "C:\\Users\\Milos\\.nuget\\packages\\",
+        "outputPath": "F:\\Projects\\UsedCars\\AdditionalEquipment.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Milos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "F:\\Projects\\UsedCars\\UsedCars.Commons\\UsedCars.Common.csproj": {
+                "projectPath": "F:\\Projects\\UsedCars\\UsedCars.Commons\\UsedCars.Common.csproj"
+              },
+              "F:\\Projects\\UsedCars\\UsedCars.Data\\UsedCars.Data.csproj": {
+                "projectPath": "F:\\Projects\\UsedCars\\UsedCars.Data\\UsedCars.Data.csproj"
+              },
+              "F:\\Projects\\UsedCars\\UsedCars.Models\\UsedCars.Models.csproj": {
+                "projectPath": "F:\\Projects\\UsedCars\\UsedCars.Models\\UsedCars.Models.csproj"
+              },
+              "F:\\Projects\\UsedCars\\UsedCars.Repository\\UsedCars.Repository.csproj": {
+                "projectPath": "F:\\Projects\\UsedCars\\UsedCars.Repository\\UsedCars.Repository.csproj"
+              },
+              "F:\\Projects\\UsedCars\\UsedCars.Services\\UsedCars.Services.csproj": {
+                "projectPath": "F:\\Projects\\UsedCars\\UsedCars.Services\\UsedCars.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\Projects\\UsedCars\\UsedCars.Commons\\UsedCars.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Projects\\UsedCars\\UsedCars.Commons\\UsedCars.Common.csproj",
+        "projectName": "UsedCars.Common",
+        "projectPath": "F:\\Projects\\UsedCars\\UsedCars.Commons\\UsedCars.Common.csproj",
+        "packagesPath": "C:\\Users\\Milos\\.nuget\\packages\\",
+        "outputPath": "F:\\Projects\\UsedCars\\UsedCars.Commons\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Milos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "F:\\Projects\\UsedCars\\UsedCars.Repository\\UsedCars.Repository.csproj": {
+                "projectPath": "F:\\Projects\\UsedCars\\UsedCars.Repository\\UsedCars.Repository.csproj"
+              },
+              "F:\\Projects\\UsedCars\\UsedCars.Services\\UsedCars.Services.csproj": {
+                "projectPath": "F:\\Projects\\UsedCars\\UsedCars.Services\\UsedCars.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\Projects\\UsedCars\\UsedCars.Data\\UsedCars.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Projects\\UsedCars\\UsedCars.Data\\UsedCars.Data.csproj",
+        "projectName": "UsedCars.Data",
+        "projectPath": "F:\\Projects\\UsedCars\\UsedCars.Data\\UsedCars.Data.csproj",
+        "packagesPath": "C:\\Users\\Milos\\.nuget\\packages\\",
+        "outputPath": "F:\\Projects\\UsedCars\\UsedCars.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Milos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[6.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\Projects\\UsedCars\\UsedCars.Models\\UsedCars.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Projects\\UsedCars\\UsedCars.Models\\UsedCars.Models.csproj",
+        "projectName": "UsedCars.Models",
+        "projectPath": "F:\\Projects\\UsedCars\\UsedCars.Models\\UsedCars.Models.csproj",
+        "packagesPath": "C:\\Users\\Milos\\.nuget\\packages\\",
+        "outputPath": "F:\\Projects\\UsedCars\\UsedCars.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Milos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "F:\\Projects\\UsedCars\\UsedCars.Data\\UsedCars.Data.csproj": {
+                "projectPath": "F:\\Projects\\UsedCars\\UsedCars.Data\\UsedCars.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\Projects\\UsedCars\\UsedCars.Repository\\UsedCars.Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Projects\\UsedCars\\UsedCars.Repository\\UsedCars.Repository.csproj",
+        "projectName": "UsedCars.Repository",
+        "projectPath": "F:\\Projects\\UsedCars\\UsedCars.Repository\\UsedCars.Repository.csproj",
+        "packagesPath": "C:\\Users\\Milos\\.nuget\\packages\\",
+        "outputPath": "F:\\Projects\\UsedCars\\UsedCars.Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Milos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "F:\\Projects\\UsedCars\\UsedCars.Data\\UsedCars.Data.csproj": {
+                "projectPath": "F:\\Projects\\UsedCars\\UsedCars.Data\\UsedCars.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\Projects\\UsedCars\\UsedCars.Services\\UsedCars.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Projects\\UsedCars\\UsedCars.Services\\UsedCars.Services.csproj",
+        "projectName": "UsedCars.Services",
+        "projectPath": "F:\\Projects\\UsedCars\\UsedCars.Services\\UsedCars.Services.csproj",
+        "packagesPath": "C:\\Users\\Milos\\.nuget\\packages\\",
+        "outputPath": "F:\\Projects\\UsedCars\\UsedCars.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Milos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "F:\\Projects\\UsedCars\\UsedCars.Models\\UsedCars.Models.csproj": {
+                "projectPath": "F:\\Projects\\UsedCars\\UsedCars.Models\\UsedCars.Models.csproj"
+              },
+              "F:\\Projects\\UsedCars\\UsedCars.Repository\\UsedCars.Repository.csproj": {
+                "projectPath": "F:\\Projects\\UsedCars\\UsedCars.Repository\\UsedCars.Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "Microsoft.AspNetCore.JsonPatch": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

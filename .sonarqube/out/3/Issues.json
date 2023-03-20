@@ -12,6 +12,27 @@
       },
       "results": [
         {
+          "ruleId": "CS8603",
+          "level": "warning",
+          "message": "Possible null reference return.",
+          "locations": [
+            {
+              "resultFile": {
+                "uri": "file:///F:/Projects/UsedCars/UsedCars.Services/Vehicle.Service/VehicleService.cs",
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 24,
+                  "endLine": 49,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
           "ruleId": "CS1998",
           "level": "warning",
           "message": "This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.",
@@ -62,27 +83,6 @@
               "resultFile": {
                 "uri": "file:///F:/Projects/UsedCars/UsedCars.Services/Vehicle.Service/VehicleService.cs",
                 "region": {
-                  "startLine": 49,
-                  "startColumn": 24,
-                  "endLine": 49,
-                  "endColumn": 28
-                }
-              }
-            }
-          ],
-          "properties": {
-            "warningLevel": 1
-          }
-        },
-        {
-          "ruleId": "CS8603",
-          "level": "warning",
-          "message": "Possible null reference return.",
-          "locations": [
-            {
-              "resultFile": {
-                "uri": "file:///F:/Projects/UsedCars/UsedCars.Services/Vehicle.Service/VehicleService.cs",
-                "region": {
                   "startLine": 84,
                   "startColumn": 24,
                   "endLine": 84,
@@ -98,16 +98,16 @@
         {
           "ruleId": "S1481",
           "level": "warning",
-          "message": "Remove the unused local variable 'deleteModel'.",
+          "message": "Remove the unused local variable 'deleteEquipment'.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///F:/Projects/UsedCars/UsedCars.Services/MakeService/MakeService.cs",
+                "uri": "file:///F:/Projects/UsedCars/UsedCars.Services/AdditionalEquipment/AdditionalEquipmentService.cs",
                 "region": {
-                  "startLine": 52,
+                  "startLine": 68,
                   "startColumn": 17,
-                  "endLine": 52,
-                  "endColumn": 28
+                  "endLine": 68,
+                  "endColumn": 32
                 }
               }
             }
@@ -140,16 +140,16 @@
         {
           "ruleId": "S1481",
           "level": "warning",
-          "message": "Remove the unused local variable 'deleteEquipment'.",
+          "message": "Remove the unused local variable 'deleteModel'.",
           "locations": [
             {
               "resultFile": {
-                "uri": "file:///F:/Projects/UsedCars/UsedCars.Services/AdditionalEquipment/AdditionalEquipmentService.cs",
+                "uri": "file:///F:/Projects/UsedCars/UsedCars.Services/MakeService/MakeService.cs",
                 "region": {
-                  "startLine": 68,
+                  "startLine": 52,
                   "startColumn": 17,
-                  "endLine": 68,
-                  "endColumn": 32
+                  "endLine": 52,
+                  "endColumn": 28
                 }
               }
             }

@@ -507,6 +507,18 @@
               "target": "Package",
               "version": "[4.18.4, )"
             },
+            "OpenCover": {
+              "target": "Package",
+              "version": "[4.7.1221, )"
+            },
+            "ReportGenerator": {
+              "target": "Package",
+              "version": "[5.1.19, )"
+            },
+            "ReportGenerator.Core": {
+              "target": "Package",
+              "version": "[5.1.19, )"
+            },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",

@@ -1,0 +1,15 @@
+﻿F:\Projects\UsedCars\UsedCars.Data\DbContexts\UsedCarsContext.cs
+F:\Projects\UsedCars\UsedCars.Data\Entities\AdditionalEquipment.cs
+F:\Projects\UsedCars\UsedCars.Data\Entities\Category.cs
+F:\Projects\UsedCars\UsedCars.Data\Entities\Make.cs
+F:\Projects\UsedCars\UsedCars.Data\Entities\Model.cs
+F:\Projects\UsedCars\UsedCars.Data\Entities\Vehicle.cs
+F:\Projects\UsedCars\UsedCars.Data\Entities\VehicleEquipment.cs
+F:\Projects\UsedCars\UsedCars.Data\Migrations\20221008203626_initialMigration2.cs
+F:\Projects\UsedCars\UsedCars.Data\Migrations\20221008203626_initialMigration2.Designer.cs
+F:\Projects\UsedCars\UsedCars.Data\Migrations\20221013113533_InitialMigration3.cs
+F:\Projects\UsedCars\UsedCars.Data\Migrations\20221013113533_InitialMigration3.Designer.cs
+F:\Projects\UsedCars\UsedCars.Data\Migrations\20221013150008_InitialMigration4.cs
+F:\Projects\UsedCars\UsedCars.Data\Migrations\20221013150008_InitialMigration4.Designer.cs
+F:\Projects\UsedCars\UsedCars.Data\Migrations\UsedCarsContextModelSnapshot.cs
+F:\Projects\UsedCars\UsedCars.Data\Properties\launchSettings.json

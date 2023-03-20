@@ -1,0 +1,3 @@
+﻿F:\Projects\UsedCars\UsedCars.Commons\Extensions\ServiceExtensions.cs
+F:\Projects\UsedCars\UsedCars.Commons\Profiles\VehicleProfile.cs
+F:\Projects\UsedCars\UsedCars.Commons\Properties\launchSettings.json
