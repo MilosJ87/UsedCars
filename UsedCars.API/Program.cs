@@ -39,7 +39,7 @@ builder.Services.AddAuthentication("Bearer")
                     opt.Audience = "UsedCars";
                 });
 
-builder.Services.AddHttpClient("ArticleClient", (config) =>
+builder.Services.AddHttpClient("EquipmentClient", (config) =>
 {
     config.BaseAddress = new Uri("https://localhost:7126/api");
 });

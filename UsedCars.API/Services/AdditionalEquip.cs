@@ -9,7 +9,7 @@ namespace UsedCars.API.Services
 
         public AdditionalEquip(IHttpClientFactory factory)
         {
-            _client = factory.CreateClient("ArticleClient");
+            _client = factory.CreateClient("EquipmentClient");
         }
         public async Task<bool> ArticleInInventory()
         {
@@ -25,23 +25,21 @@ namespace UsedCars.API.Services
             }
         }
 
-
-
         public async Task<IEnumerable<AdditionalEquipmentDto>> GetAdditionalEquipment()
         {
-            string url = $"/api/equipment";
+            string url = $"api/AdditionalEquipment";
 
             HttpResponseMessage response = await _client.GetAsync(url);
 
-            IEnumerable<AdditionalEquipmentDto> article = null;
+            IEnumerable<AdditionalEquipmentDto> equipment = null;
 
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync();
-                article = JsonConvert.DeserializeObject<IEnumerable<AdditionalEquipmentDto>>(result);
+                equipment = JsonConvert.DeserializeObject<IEnumerable<AdditionalEquipmentDto>>(result);
             }
 
-            return article;
+            return equipment;
 
         }
     }
