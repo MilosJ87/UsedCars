@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xOARgc3A7n/ds/+VBBkxFpLDLqKonVfOjQgmMSbZ4j5nRrYekupvoC/diOQnlXbMlwSTp/88S44oWYnRGrs0OA==",
+  "dgSpecHash": "gOwPJr5qzoBFpu6ZPLDcVCqRAATptiVY7EkwyH0NSmIcn3qCOtHw75kGTJIz2XCymQEIcFeRzl9u0i3tsOIW5Q==",
   "success": true,
   "projectFilePath": "F:\\Projects\\UsedCars\\UsedCars.Tests\\UsedCars.Tests.csproj",
   "expectedPackageFiles": [
@@ -69,6 +69,7 @@
     "C:\\Users\\Milos\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\Milos\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.3.2\\microsoft.testplatform.objectmodel.17.3.2.nupkg.sha512",
     "C:\\Users\\Milos\\.nuget\\packages\\microsoft.testplatform.testhost\\17.3.2\\microsoft.testplatform.testhost.17.3.2.nupkg.sha512",
+    "C:\\Users\\Milos\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.2\\microsoft.visualstudio.azure.containers.tools.targets.1.17.2.nupkg.sha512",
     "C:\\Users\\Milos\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Milos\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\Milos\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
