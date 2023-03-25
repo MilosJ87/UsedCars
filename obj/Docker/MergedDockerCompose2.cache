@@ -7,6 +7,7 @@ services:
       labels:
         com.microsoft.created-by: visual-studio
         com.microsoft.visual-studio.project-name: UsedCars.API
+      target: base
     container_name: UsedCars.API
     entrypoint:
     - tail
@@ -14,11 +15,13 @@ services:
     - /dev/null
     environment:
       ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
       ASPNETCORE_URLS: https://+:443;http://+:80
-    image: usedcarsapi
+      DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      NUGET_FALLBACK_PACKAGES: ""
+    image: usedcarsapi:dev
     labels:
-      com.microsoft.visual-studio.project-name: UsedCars.API
-      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/UsedCars.API.dll"'
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/net6.0/UsedCars.API.dll"'
       com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
         dotnet); then kill $$PID; fi"
       com.microsoft.visualstudio.debuggee.program: dotnet
@@ -35,6 +38,11 @@ services:
     tty: true
     volumes:
     - type: bind
+      source: F:\Projects\UsedCars\UsedCars.API
+      target: /app
+      bind:
+        create_host_path: true
+    - type: bind
       source: C:\Users\Milos\vsdbg\vs2017u5
       target: /remote_debugger
       bind:
@@ -49,6 +57,17 @@ services:
       source: C:\Users\Milos\AppData\Roaming/Microsoft/UserSecrets
       target: /root/.microsoft/usersecrets
       read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Milos\.nuget\packages\
+      target: /root/.nuget/packages
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: F:\Projects\UsedCars
+      target: /src
       bind:
         create_host_path: true
 networks:

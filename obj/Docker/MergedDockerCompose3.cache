@@ -14,9 +14,7 @@ services:
       published: "1433"
       protocol: tcp
   usedcars.api:
-    build:
-      context: F:\Projects\UsedCars
-      dockerfile: UsedCars.API/Dockerfile
+    container_name: UsedCars.API
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
@@ -26,6 +24,10 @@ services:
     ports:
     - mode: ingress
       target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 80
+      published: "5000"
       protocol: tcp
     - mode: ingress
       target: 443
@@ -43,16 +45,6 @@ services:
       read_only: true
       bind:
         create_host_path: true
-  web_api:
-    container_name: UsedCars.API
-    image: usedcarsapi
-    networks:
-      default: null
-    ports:
-    - mode: ingress
-      target: 80
-      published: "5000"
-      protocol: tcp
 networks:
   default:
     name: dockercompose15882558971031530547_default

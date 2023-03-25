@@ -1,7 +1,8 @@
-version: '3.9'
+version: '3.4'
 
 services:
   usedcars.api:
+    container_name: UsedCars.API
     build:
       labels:
         com.microsoft.created-by: "visual-studio"

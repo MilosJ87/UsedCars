@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>3f9c703e-3fee-44f9-9267-a248ab83d0c3</ProjectGuid>
+    <ProjectGuid>03e57fe0-ee1f-4ba6-9db0-57a284ba84d6</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>usedcars.api</DockerServiceName>

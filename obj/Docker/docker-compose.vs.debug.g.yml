@@ -1,8 +1,9 @@
-version: '3.9'
+version: '3.4'
 
 services:
   usedcars.api:
     image: usedcarsapi:dev
+    container_name: UsedCars.API
     build:
       target: base
       labels:

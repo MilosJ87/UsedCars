@@ -14,14 +14,11 @@ services:
       published: "1433"
       protocol: tcp
   usedcars.api:
-    build:
-      context: F:\Projects\UsedCars
-      dockerfile: UsedCars.API/Dockerfile
     container_name: UsedCars.API
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: https://+:443;http://+:80
-    image: usedcarsapi
+    image: usedcars.api
     networks:
       default: null
     ports:

@@ -16,7 +16,7 @@ services:
   usedcars.api:
     build:
       context: F:\Projects\UsedCars
-      dockerfile: UsedCars.API/Dockerfile
+      dockerfile: Dockerfile
       labels:
         com.microsoft.created-by: visual-studio
         com.microsoft.visual-studio.project-name: UsedCars.API
@@ -44,6 +44,10 @@ services:
     ports:
     - mode: ingress
       target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 80
+      published: "5000"
       protocol: tcp
     - mode: ingress
       target: 443
@@ -83,16 +87,6 @@ services:
       target: /src
       bind:
         create_host_path: true
-  web_api:
-    container_name: UsedCars.API
-    image: usedcarsapi
-    networks:
-      default: null
-    ports:
-    - mode: ingress
-      target: 80
-      published: "5000"
-      protocol: tcp
 networks:
   default:
     name: dockercompose15882558971031530547_default

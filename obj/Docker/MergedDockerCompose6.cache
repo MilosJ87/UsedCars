@@ -16,7 +16,7 @@ services:
   usedcars.api:
     build:
       context: F:\Projects\UsedCars
-      dockerfile: UsedCars.API/Dockerfile
+      dockerfile: Dockerfile
       labels:
         com.microsoft.created-by: visual-studio
         com.microsoft.visual-studio.project-name: UsedCars.API

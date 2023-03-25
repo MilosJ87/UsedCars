@@ -34,10 +34,4 @@
     <ProjectReference Include="..\UsedCars.Services\UsedCars.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="docker-compose.override.yml">
-      <DependentUpon>docker-compose.yml</DependentUpon>
-    </None>
-  </ItemGroup>
-
 </Project>
